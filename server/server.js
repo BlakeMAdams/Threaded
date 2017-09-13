@@ -7,6 +7,8 @@ const express = require('express')
 , massive = require('massive')
 , session = require('express-session');
 
+const addToServer = require('./controllers/addToServer');
+
 const app = express();
 app.use(bodyParser.json());
 //NEED TO REVISE
@@ -39,7 +41,7 @@ passport.use(new Auth0Strategy({
   
   
 	db.findCustomer(profile.id).then(user => {
-    
+    console.log('findCustomer user');
 		if (user[0]){
 			return done(null, user[0]);
 		} else {
@@ -52,7 +54,7 @@ passport.use(new Auth0Strategy({
 
 //THIS IS INVOKED ONE TIME TO SET THINGS UP
 passport.serializeUser(function(user, done) {
-  
+  console.log('serialize user info')
   var userInfo = {
     id: user.id,
     first_name: user.first_name,
@@ -66,14 +68,14 @@ passport.serializeUser(function(user, done) {
     phone: user.phone,
     picture: user.picture
   }
-  console.log('serializeUser triggered',userInfo);
+  console.log('serializeUser triggered');
   done(null, userInfo);
 });
 
 // won't run deserializeUser until hitting the endpoint 
 //USER COMES FROM SESSION - THIS IS INVOKED FOR EVERY ENDPOINT
 passport.deserializeUser(function(userInfo, done){
-  console.log('deserializeUser triggered. user = ', userInfo);
+  // console.log('deserializeUser triggered. user = ', userInfo);
   done(null, userInfo)
   //PUTS ON req.user
 });
@@ -94,8 +96,8 @@ app.get('/api/auth/setCustomer', (req, res) => {
   if(!req.user) {
     return res.status(404).send('User not found')
    } else {
-     console.log('customer info is set on req.user', req.user);
-     return res.status(200).send(req.user); // or is it res.user ?
+     console.log('customer info on req.user =', req.user);
+     return res.status(200).send(req.user);
    }
  });
 
@@ -106,8 +108,10 @@ app.post('/api/auth/logout', (req, res) => {
      //302 is the status code for redirect
 });
 
-
-
+//ENDPOINT update customer
+// app.post('/api/updateCustomer', addToServer.updateCustomer);
+app.post('/api/updateCustomer', addToServer.updateCustomer);
+  
 
 let PORT = 3030;
 app.listen(PORT, () => {
