@@ -1,7 +1,17 @@
 import React, { Component } from 'react';
 import './profile.css';
 
-export default class ProfileForm extends Component {
+import { getCustomerInfo } from './../ducks/reducer';
+import { handleSubmit } from './../ducks/reducer';
+import { handleChange } from './../ducks/reducer';
+import { connect } from 'react-redux';
+
+class ProfileForm extends Component {
+
+	componentDidMount(){
+		this.props.getCustomerInfo();
+		
+	}
 	render() {
 		return (
 			<div>
@@ -87,3 +97,16 @@ export default class ProfileForm extends Component {
 
 
 }
+function mapStateToProps(state) {
+	return {
+		customer: state.customer
+	}
+}
+
+let outputActions = {
+	getCustomerInfo,
+	handleChange,
+	handleSubmit
+}
+
+export default connect(mapStateToProps, outputActions)(ProfileForm);
