@@ -1,11 +1,12 @@
   
+#profile,#profile-form{
    form {
 	padding: 2rem;
 	margin-top: 2rem;
 	margin-right: auto;
 	margin-left: auto;
 	max-width: 55rem;
-	background-color: #fff;
+	background-color: $white;
 	border-radius: 3px;
 	box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
    }
@@ -37,7 +38,7 @@
 	font-size: 1rem;
 	line-height: 1.25;
 	color: #55595c;
-	background-color: #fff;
+	background-color: $white;
 	background-image: none;
 	background-clip: padding-box;
 	border-top: 0;
@@ -52,7 +53,7 @@
    input:focus,
    textarea:focus {
 	outline: 0;
-	border-bottom-color: #ffab00;
+	border-bottom-color: $btn-color;
    }
    
    textarea {
@@ -66,10 +67,10 @@
 	font-weight: 400;
 	text-align: center;
 	text-transform: uppercase;
-	color: #fff;
+	color: $white;
 	vertical-align: middle;
 	white-space: nowrap;
-	background-color: #ffab00;
+	background-color: $btn-color;
 	border: 1px solid transparent;
 	box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
 	cursor: pointer;
@@ -82,9 +83,10 @@
    }
    
    .btn:focus, .btn:hover {
-	background-color: #ffc142;
+	background-color: $btn-highlight;
 	box-shadow: 0 18px 35px rgba(50, 50, 93, 0.1), 0 8px 15px rgba(0, 0, 0, 0.07);
    }
    .btn:focus {
 	outline: 0;
    }
+}

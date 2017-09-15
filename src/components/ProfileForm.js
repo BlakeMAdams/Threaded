@@ -1,75 +1,98 @@
 import React, { Component } from 'react';
-import './profile.css';
-
-import { getCustomerInfo } from './../ducks/reducer';
-import { handleSubmit } from './../ducks/reducer';
-import { handleChange } from './../ducks/reducer';
+import axios from 'axios';
 import { connect } from 'react-redux';
 
-class ProfileForm extends Component {
 
-	componentDidMount(){
-		this.props.getCustomerInfo();
-		
+// import { getCustomerInfoAction } from './../ducks/reducer';
+// import { handleSubmit } from './../ducks/reducer';
+// import { handleChange } from './../ducks/reducer';
+
+
+export default class ProfileForm extends Component {
+	constructor(props) {
+		super(props);
+		// this.handleSubmit = this.handleSubmit.bind(this);
+
+		// this.state = { customer: props.state }
 	}
+	componentDidMount() {
+		console.log('profileform this.props =', this.props);
+	}
+	// componentWillReceiveProps(nextProps) {
+	// 	this.setState({
+	// 		customer: nextProps.state
+	// 	})
+	// }
+
+	// handleSubmit() {
+
+	// 	console.log('posted', this.state.customer);
+	// 	axios.post('/api/updateCustomer', this.state.customer).then(res => console.log(res))
+
+
+	// }
+
 	render() {
 		return (
-			<div>
+			<div id="profile-form">
 				<p>{this.props.error}</p>
-				<form className='react-form' >
+
+				
+				{/* <form className='react-form' action={axios.post('/api/updateCustomer', this.state)} method="post"> */}
+				<form className='react-form'>
 
 					<fieldset className='form-group'>
 						<label >First Name:</label>
 
-						<input id='formFirstName' className='form-input' name='first_name' type='text' required onChange={this.props.handleChange} value={this.props.first_name} />
+						<input id='formFirstName' className='form-input' name='first_name' type='text' onChange={(e) => this.props.handleChange(e)} value={this.props.first_name} />
 					</fieldset>
 
 					<fieldset className='form-group'>
 						<label>Last Name:</label>
 
-						<input id='formLastName' className='form-input' name='last_name' type='text' required onChange={this.props.handleChange} value={this.props.last_name} />
+						<input id='formLastName' className='form-input' name='last_name' type='text' onChange={(e) => this.props.handleChange(e)} value={this.props.last_name} />
 					</fieldset>
 
 					<fieldset className='form-group'>
 						<label>Email:</label>
 
-						<input id='formEmail' className='form-input' name='email' type='email' required onChange={this.props.handleChange} value={this.props.email} />
+						<input id='formEmail' className='form-input' name='email' type='text' onChange={(e) => this.props.handleChange(e)} value={this.props.email} />
 					</fieldset>
 
 					<fieldset className='form-group'>
 						<label>Address:</label>
 
-						<input id='formAddress' className='form-input' name='address' type='text' required onChange={this.props.handleChange} value={this.props.address} />
+						<input id='formAddress' className='form-input' name='address' type='text' onChange={(e) => this.props.handleChange(e)} value={this.props.address} />
 					</fieldset>
 
 					<fieldset className='form-group'>
 						<label>city:</label>
 
-						<input id='formCity' className='form-input' name='city' type='text' required onChange={this.props.handleChange} value={this.props.city} />
+						<input id='formCity' className='form-input' name='city' type='text' onChange={(e) => this.props.handleChange(e)} value={this.props.city} />
 					</fieldset>
 
 					<fieldset className='form-group'>
 						<label>State:</label>
 
-						<input id='formState' className='form-input' name='state' type='text' required onChange={this.props.handleChange} value={this.props.state} />
+						<input id='formState' className='form-input' name='state' type='text' onChange={(e) => this.props.handleChange(e)} value={this.props.state} />
 					</fieldset>
 
 					<fieldset className='form-group'>
 						<label>Country:</label>
 
-						<input id='formCountry' className='form-input' name='country' type='text' required onChange={this.props.handleChange} value={this.props.country} />
+						<input id='formCountry' className='form-input' name='country' type='text' onChange={(e) => this.props.handleChange(e)} value={this.props.country} />
 					</fieldset>
 
 					<fieldset className='form-group'>
 						<label>Zip:</label>
 
-						<input id='formZip' className='form-input' name='zip' type='text' required onChange={this.props.handleChange} value={this.props.zip} />
+						<input id='formZip' className='form-input' name='zip' type='text' onChange={(e) => this.props.handleChange(e)} value={this.props.zip} />
 					</fieldset>
 
 					<fieldset className='form-group'>
 						<label>Phone:</label>
 
-						<input id='formPhone' className='form-input' name='phone' type='text' required onChange={this.props.handleChange} value={this.props.phone} />
+						<input id='formPhone' className='form-input' name='phone' type='text' onChange={(e) => this.props.handleChange(e)} value={this.props.phone} />
 					</fieldset>
 
 
@@ -80,16 +103,13 @@ class ProfileForm extends Component {
 							<textarea id='formMessage' className='form-textarea' name='message' required onChange={this.props.handleChange}></textarea>
 							</fieldset> */}
 
+					{/* THIS FORM DOES NOT UPDATE CORRECTLY, USING THE BUTTON IN ITS PARENT> Profile.js 
 					<div className='form-group'>
 						<button id='formButton' className='btn' onClick={() => {
-							console.log('clicked');
-							{/* var testObject = Object.assign({}, this.state) */ }
-
-
-							this.handleSubmit()
+							this.props.handleSubmit()
 						}}>Update Profile</button>
 
-					</div>
+					</div> */}
 				</form>
 			</div>
 		)
@@ -97,16 +117,16 @@ class ProfileForm extends Component {
 
 
 }
-function mapStateToProps(state) {
-	return {
-		customer: state.customer
-	}
-}
+// function mapStateToProps(state) {
+// 	console.log('mapStateToProps state.customer' + JSON.stringify(state.customer))
+// 	return {
+// 		customer: state.customer
+// 	}
+// }
 
-let outputActions = {
-	getCustomerInfo,
-	handleChange,
-	handleSubmit
-}
+// let outputActions = {
+// 	getCustomerInfoAction,
+// 	handleChange
+// }
 
-export default connect(mapStateToProps, outputActions)(ProfileForm);
+// export default connect(mapStateToProps, outputActions)(ProfileForm);

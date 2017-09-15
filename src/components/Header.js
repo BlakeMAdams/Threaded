@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import menuIcon from '../img/home.png';
-import cartImage from '../img/search.png';
+import cartImage from '../img/cart.svg';
 import { Link } from 'react-router-dom';
 
 export default class Header extends Component {
@@ -10,25 +10,27 @@ export default class Header extends Component {
 			<div id="header">
 				<div className="header-container">
 					<header>
-						<nav>
-							<div>
-								<Link to="/how-it-works">How it Works</Link>
+						<nav className="flex">
+							<div className="flex">
+								<Link to="/how-it-works">How it Works</Link> &nbsp; 
 								<Link to="/about">About Threaded</Link>
+
 							</div>
-							<div>
-								<h1>Threaded</h1>
+							<div className="flex">
+								<h1><Link to="/">Threaded</Link></h1>
 							</div>
-							<div>
-								<a href={process.env.REACT_APP_LOGIN}>Sign In</a>
-								<br/>
-								<Link to="/cart">Cart <img src={cartImage} alt="Cart" /></Link>
+							<div className="flex">
+								<Link to="/profile">Profile</Link>  &nbsp; 
+								<a href={process.env.REACT_APP_LOGIN}>Log In</a> &nbsp; 
+								<a href={process.env.REACT_APP_LOGOUT}>Log Out</a> &nbsp; 
+								<Link to="/cart">Cart<img src={cartImage} alt="Cart" /></Link>
 							</div>
 						</nav>
-						<br/>
+						<br />
 						<nav>
 
 						</nav>
-						
+
 					</header>
 				</div >
 			</div >

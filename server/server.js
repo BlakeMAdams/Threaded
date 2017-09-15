@@ -5,14 +5,16 @@ const express = require('express')
 , passport = require('passport')
 , Auth0Strategy = require('passport-auth0')
 , massive = require('massive')
-, session = require('express-session');
+, session = require('express-session')
+, cors = require('cors');
 
 const addToServer = require('./controllers/addToServer');
 
 const app = express();
+app.use(cors());
 app.use(bodyParser.json());
 //NEED TO REVISE
-// app.use( express.static( `${__dirname}/../public/build` ) );
+app.use( express.static( `${__dirname}/../public/build` ) );
 
 app.use(session({
   secret: process.env.SECRET,
@@ -41,7 +43,7 @@ passport.use(new Auth0Strategy({
   
   
 	db.findCustomer(profile.id).then(user => {
-    console.log('findCustomer user');
+    // console.log('findingCustomer user');
 		if (user[0]){
 			return done(null, user[0]);
 		} else {
@@ -54,7 +56,7 @@ passport.use(new Auth0Strategy({
 
 //THIS IS INVOKED ONE TIME TO SET THINGS UP
 passport.serializeUser(function(user, done) {
-  console.log('serialize user info')
+  // console.log('serialize user info')
   var userInfo = {
     id: user.id,
     first_name: user.first_name,
@@ -68,48 +70,48 @@ passport.serializeUser(function(user, done) {
     phone: user.phone,
     picture: user.picture
   }
-  console.log('serializeUser triggered');
+  console.log('serializeUser triggered', userInfo.first_name);
   done(null, userInfo);
 });
 
 // won't run deserializeUser until hitting the endpoint 
 //USER COMES FROM SESSION - THIS IS INVOKED FOR EVERY ENDPOINT
 passport.deserializeUser(function(userInfo, done){
-  // console.log('deserializeUser triggered. user = ', userInfo);
+  // console.log('deserializeUser triggered ');
   done(null, userInfo)
   //PUTS ON req.user
 });
 
 //ENDPOINTS
-//ENDPOINT #1 - AUTHORIZATION ENDPOINT
+//ENDPOINT - AUTHORIZATION ENDPOINT
 app.get('/api/auth/login', passport.authenticate('auth0'));
 
-//ENDPOINT #2 - AUTHORIZATION ENDPOINT
+//ENDPOINT (Logout)
+app.get('/api/auth/logout', (req, res) => {
+  req.logout() //PASSPORT GIVES US THIS TO TERMINATE A LOGIN SESSION
+  return res.redirect(302, 'http://localhost:3000/#/'); //res.redirect comes from express to redirect user to the given url
+    //302 is the status code for redirect
+});
+
+//ENDPOINT - AUTHORIZATION ENDPOINT
 app.get('/api/auth/callback', passport.authenticate('auth0', {
    successRedirect: 'http://localhost:3000/#/profile',
    failureRedirect: 'http://localhost:3000/#/login',
    failureFlash: true
  }));
 
-//ENDPOINT #3
+//ENDPOINT - sending req.user back to front end
 app.get('/api/auth/setCustomer', (req, res) => {
+  // console.log('server setCustomer triggered', req.user.first_name)
   if(!req.user) {
     return res.status(404).send('User not found')
    } else {
-     console.log('customer info on req.user =', req.user);
+    //  console.log('customer info found on req.user');
      return res.status(200).send(req.user);
    }
  });
 
-//ENDPOINT #4 (Logout)
-app.post('/api/auth/logout', (req, res) => {
-   req.logout() //PASSPORT GIVES US THIS TO TERMINATE A LOGIN SESSION
-   return res.redirect(302, 'http://localhost:3000/#/'); //res.redirect comes from express to redirect user to the given url
-     //302 is the status code for redirect
-});
-
 //ENDPOINT update customer
-// app.post('/api/updateCustomer', addToServer.updateCustomer);
 app.post('/api/updateCustomer', addToServer.updateCustomer);
   
 
