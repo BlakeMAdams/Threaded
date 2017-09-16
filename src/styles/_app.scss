@@ -9,50 +9,79 @@
   #141C24 blackblue
 */
 
-$prim-color : #2C3E50;
-$sec-color : #2980B9;
-$highlight-color : #3498DB;
-$btn-color : #E74C3C;
+$prim-color: #2C3E50;
+$sec-color: #2980B9;
+$highlight-color: #3498DB;
+$btn-color: #E74C3C;
 $btn-highlight: #FF5442;
-$bg-color : #141C24;
-$txt-color : #141C24;
-$white : #ECF0F1;
-
-$font-stack: 'Open Sans', Helvetica, sans-serif;
-
-
+$bg-color: #141C24;
+$txt-color: #141C24;
+$white: #ECF0F1;
 @import url("https://fonts.googleapis.com/css?family=Open+Sans");
+$font-stack: 'Open Sans',
+Helvetica,
+sans-serif;
 * {
-  box-sizing: border-box; }
-
-body {
-  background-color: $bg-color; }
-
-.flex {
-  display: flex; }
-
-.content {
-  border-radius: 2px;
-  background-color: $white;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
-  padding: 10px; }
-
-.page {
-  max-width: 850px;
-  margin: 0 auto; 
-  background-color: $white;
-  padding: 20px;
+    box-sizing: border-box;
 }
 
-body, h1, h2, h3, h4, h5, p, ul, li {
-  font-family: $font-stack;
-  font-weight: 400; }
+body {
+    background-color: $bg-color;
+}
 
-a { color: $prim-color;}
-a,a:hover, a:focus, a:active { text-decoration: none; }
-a:hover, a:focus { color: $sec-color;}
-a:active { color: $btn-color;}
+.flex {
+    display: flex;
+}
 
-header nav {
-  justify-content: space-around;
+.content {
+    border-radius: 2px;
+    background-color: $white;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+    padding: 10px;
+}
+
+.page {
+    max-width: 850px;
+    margin: 0 auto;
+    background-color: $white;
+    padding: 20px;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+ul,
+li {
+    font-family: $font-stack;
+    font-weight: 400;
+    color: $prim-color;
+}
+
+a {
+    color: $prim-color;
+}
+
+a,
+a:hover,
+a:focus,
+a:active {
+    text-decoration: none;
+}
+
+a:hover,
+a:focus {
+    color: $sec-color;
+}
+
+a:active {
+    color: $btn-color;
+}
+
+.icon {
+  width: 35px;
+  height: 35px;
 }

@@ -9,7 +9,7 @@ export default class Cart extends Component {
 			<div id="cart">
 				<Header />
 				<div className="page">
-				Cart
+				<h1 className="title">Cart</h1>
 				</div>
 				<Footer />
 			</div>

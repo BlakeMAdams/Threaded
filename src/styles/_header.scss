@@ -1,0 +1,40 @@
+#header {
+    background-color: $white;
+}
+
+header nav {
+    justify-content: center;
+    flex-direction: column;
+}
+
+.title {
+    font-size: 36px;
+    /* cursive font */
+}
+
+.main-nav-container {
+    justify-content: space-between;
+}
+
+.main-nav a {
+    margin: 0 7px;
+}
+
+.main-nav-container a {
+    margin: 0 5px;
+}
+
+.site-title {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.site-title h1 {
+    margin: 0;
+}
+
+.floatR {
+    float: right;
+}
+

@@ -9,7 +9,7 @@ export default class Home extends Component {
 			<div id="home">
 				<Header />
 				<div className="page">
-				Home
+				<h1 className="title">Home</h1>
 				</div>
 				<Footer />
 			</div>

@@ -9,7 +9,7 @@ export default class Gallery extends Component {
 			<div id="gallery">
 				<Header />
 				<div className="page">
-				Gallery
+				<h1 className="title">Gallery</h1>
 				</div>
 				<Footer />
 			</div>

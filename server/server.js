@@ -114,6 +114,11 @@ app.get('/api/auth/setCustomer', (req, res) => {
 //ENDPOINT update customer
 app.post('/api/updateCustomer', addToServer.updateCustomer);
   
+//ENDPOINTS FOR CLOTHING
+app.get('/api/bottoms', controller.getBottoms);
+app.get('/api/shirts', controller.getShirts);
+app.get('/api/dresses', controller.getDresses);
+app.get('/api/patterns', controller.getPatterns);
 
 let PORT = 3030;
 app.listen(PORT, () => {

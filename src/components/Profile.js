@@ -84,74 +84,74 @@ export default class Profile extends Component {
 		// 		error: 'Please fill in all fields'
 		// 	})
 		// } else {
-			// console.log('posted');
+		// console.log('posted');
 
-			// var person = {
-			// 	id: this.state.id,
-			// 	first_name: this.state.first_name,
-			// 	last_name: this.state.last_name,
-			// 	email: this.state.email,
-			// 	address: this.state.address,
-			// 	city: this.state.city,
-			// 	state: this.state.state,
+		// var person = {
+		// 	id: this.state.id,
+		// 	first_name: this.state.first_name,
+		// 	last_name: this.state.last_name,
+		// 	email: this.state.email,
+		// 	address: this.state.address,
+		// 	city: this.state.city,
+		// 	state: this.state.state,
 
-			// 	zip: this.state.zip,
-			// 	phone: this.state.phone
+		// 	zip: this.state.zip,
+		// 	phone: this.state.phone
 
-			// }
-			// console.log(person)
+		// }
+		// console.log(person)
 
-			return axios.post('/api/updateCustomer', this.state).then(res => {
-				console.log('response from updateCustomer post', res)
+		return axios.post('/api/updateCustomer', this.state).then(res => {
+			console.log('response from updateCustomer post', res)
 
-			})
+		})
 
-		
+
 	}
 
-		render() {
-			return (
-				<div id="profile">
-					<Header />
-					<div className="page">
-						<h1>Profile</h1>
-						<h4>Please make sure all your information is complete in order to make a purchase.</h4>
-						{/* ID = {this.state.id} <br />
+	render() {
+		return (
+			<div id="profile">
+				<Header />
+				<div className="page">
+					<h1 className="title">Profile</h1>
+					<h4>Please make sure all your information is complete in order to make a purchase.</h4>
+					{/* ID = {this.state.id} <br />
 					First name = {this.state.first_name}<br />
 					Last name = {this.state.last_name}<br />
 					Email = {this.state.email} */}
-						<br />
-						
-
-						<ProfileForm
-							state={this.state}
-							first_name={this.state.first_name}
-							last_name={this.state.last_name}
-							email={this.state.email}
-							address={this.state.address}
-							city={this.state.city}
-							state={this.state.state}
-							country={this.state.country}
-							zip={this.state.zip}
-							phone={this.state.phone}
-							picture={this.state.picture}
-							error={this.state.error}
-							handleChange={(e) => this.handleChange(e)}
-							handleSubmit={this.handleSubmit}
-						/>
-						<button id='formButton' className='btn' onClick={() => {
-							{/* console.log('clicked'); */ }
-							this.handleSubmit()
-						}}>Update Profile</button>
+					<br />
 
 
-					</div>
-					<Footer />
+					<ProfileForm
+						state={this.state}
+						first_name={this.state.first_name}
+						last_name={this.state.last_name}
+						email={this.state.email}
+						address={this.state.address}
+						city={this.state.city}
+						state={this.state.state}
+						country={this.state.country}
+						zip={this.state.zip}
+						phone={this.state.phone}
+						picture={this.state.picture}
+						error={this.state.error}
+						handleChange={(e) => this.handleChange(e)}
+						handleSubmit={this.handleSubmit}
+					/>
+					<button id='formButton' className='btn' onClick={() => {
+						{/* console.log('clicked'); */ }
+						this.handleSubmit()
+					}}>Update Profile</button>
+
+
 				</div>
-			)
-		}
-
+				<Footer />
+			</div>
+		)
 	}
+
+}
 // function mapStateToProps(state) {
 // 	console.log('Profile.js state', state)
 // 	return {
