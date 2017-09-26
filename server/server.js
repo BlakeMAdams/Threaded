@@ -1,5 +1,6 @@
 require('dotenv').config();
 
+
 const express = require('express')
 , bodyParser = require('body-parser')
 , passport = require('passport')
@@ -9,6 +10,7 @@ const express = require('express')
 , cors = require('cors');
 
 const addToServer = require('./controllers/addToServer');
+const controller = require('./controller');
 
 const app = express();
 app.use(cors());
@@ -40,17 +42,17 @@ passport.use(new Auth0Strategy({
 }, function (accessToken, refreshToken, extraParams, profile, done) {
 	// console.log(profile);
   const db = app.get('db');
-  
-  
+    
 	db.findCustomer(profile.id).then(user => {
-    // console.log('findingCustomer user');
+    console.log('findingCustomer user', user);
 		if (user[0]){
 			return done(null, user[0]);
 		} else {
 			db.createCustomer([profile.id, profile.name.givenName, profile.name.familyName, profile.emails[0].value, profile._json.picture_large]).then( user => {
 				return done(null, user);
 			})
-		}
+    }
+
 	})
 }));
 
@@ -68,7 +70,9 @@ passport.serializeUser(function(user, done) {
     country: user.country,
     zip: user.zip,
     phone: user.phone,
-    picture: user.picture
+    picture: user.picture,
+    logged: true,
+    role: user.role
   }
   console.log('serializeUser triggered', userInfo.first_name);
   done(null, userInfo);
@@ -89,6 +93,7 @@ app.get('/api/auth/login', passport.authenticate('auth0'));
 //ENDPOINT (Logout)
 app.get('/api/auth/logout', (req, res) => {
   req.logout() //PASSPORT GIVES US THIS TO TERMINATE A LOGIN SESSION
+  console.log('req.user', req.user);
   return res.redirect(302, 'http://localhost:3000/#/'); //res.redirect comes from express to redirect user to the given url
     //302 is the status code for redirect
 });
@@ -111,16 +116,32 @@ app.get('/api/auth/setCustomer', (req, res) => {
    }
  });
 
+
 //ENDPOINT update customer
 app.post('/api/updateCustomer', addToServer.updateCustomer);
   
 //ENDPOINTS FOR CLOTHING
+app.get('/api/getClothing', function(req,res,next){
+const db = app.get('db');
+db.importClothing().then( (clothing)=> res.status(200).send(clothing) )
+});
+
+app.get('/api/getGallery', function(req,res,next){
+  const db = app.get('db');
+  db.importGallery().then( (gallery)=> res.status(200).send(gallery) )
+});
+
+app.get('/api/getMaterials', function(req,res,next){
+  const db = app.get('db');
+  db.importMaterials().then( (materials)=> res.status(200).send(materials) )
+});
+
 app.get('/api/bottoms', controller.getBottoms);
 app.get('/api/shirts', controller.getShirts);
 app.get('/api/dresses', controller.getDresses);
 app.get('/api/patterns', controller.getPatterns);
 
-let PORT = 3030;
+let PORT = 3050;
 app.listen(PORT, () => {
   console.log(`Listening on port: ${PORT}`);
 })

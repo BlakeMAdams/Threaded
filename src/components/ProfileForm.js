@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import { connect } from 'react-redux';
+// import axios from 'axios';
+// import { connect } from 'react-redux';
 
 
 // import { getCustomerInfoAction } from './../ducks/reducer';
@@ -18,19 +18,8 @@ export default class ProfileForm extends Component {
 	componentDidMount() {
 		console.log('profileform this.props =', this.props);
 	}
-	// componentWillReceiveProps(nextProps) {
-	// 	this.setState({
-	// 		customer: nextProps.state
-	// 	})
-	// }
-
-	// handleSubmit() {
-
-	// 	console.log('posted', this.state.customer);
-	// 	axios.post('/api/updateCustomer', this.state.customer).then(res => console.log(res))
-
-
-	// }
+	
+	
 
 	render() {
 		return (

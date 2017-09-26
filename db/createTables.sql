@@ -27,20 +27,28 @@ CREATE TABLE materials (
 	id SERIAL PRIMARY KEY,
 	name TEXT,
 	base_color TEXT,
+	fabric TEXT,
 	category TEXT,
 	quantity INTEGER,
-	cost INTEGER
+	cost INTEGER,
+	image TEXT
 );
 
 CREATE TABLE clothing (
 	id SERIAL PRIMARY KEY,
+	name TEXT,
+	description TEXT,
+	price INTEGER,
 	category TEXT,
-	type TEXT
+	type TEXT,
+	image TEXT
 );
 
 CREATE TABLE gallery (
 	id SERIAL PRIMARY KEY,
+	name TEXT,
 	category TEXT,
 	type TEXT,
-	material TEXT
+	image TEXT,
+	material integer references materials (id)
 );

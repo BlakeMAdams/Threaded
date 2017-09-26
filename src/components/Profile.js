@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 
 import Header from './Header';
 import Footer from './Footer';
 
 import ProfileForm from './ProfileForm';
-import { getCustomerInfoAction } from './../ducks/reducer';
+// import { getCustomerInfoAction } from './../ducks/reducer';
 import getCustomerInfo from './../services/getCustomerInfo';
 
 
@@ -50,7 +50,8 @@ export default class Profile extends Component {
 					zip: res.zip,
 					phone: res.phone,
 					picture: res.picture,
-					error: res.error
+					error: res.error,
+					logged: true
 				})
 				if (res.country !== 'USA' && res.country !== false) {
 					this.setState({

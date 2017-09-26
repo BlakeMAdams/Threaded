@@ -10,6 +10,8 @@ import Howitworks from './components/Howitworks';
 import Cart from './components/Cart';
 import Clothing from './components/Clothing';
 import Materials from './components/Materials';
+import Measurements from './components/Measurements';
+import MeasureMyself from './components/MeasureMyself';
 
 
 class App extends Component {
@@ -27,6 +29,8 @@ class App extends Component {
           <Route path='/cart' component={Cart} />
           <Route path='/clothing' component={Clothing} />
           <Route path='/materials' component={Materials} />
+          <Route path='/measurements' component={Measurements} />
+          <Route pathe='/measure-myself' component={MeasureMyself} />
          
         </Switch>
 
