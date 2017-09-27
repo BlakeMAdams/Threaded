@@ -1,5 +1,5 @@
 const initialState = {
-	bag: [],
+	bag: [["Dresses","Chelsea",70,"Polka Dots","no default measurement",{Bust: "20", Chest: "20", Hip: "22", Shoulder: "20", Under_Bust: "21", Upper_Arm:	"20", Waist: "25"}]],
 	measurements: {
 		Bust: '',
 		Chest: '',
