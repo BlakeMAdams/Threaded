@@ -7,7 +7,7 @@ import Profile from './components/Profile';
 import Gallery from './components/Gallery';
 import About from './components/About';
 import Howitworks from './components/Howitworks';
-import Cart from './components/Cart';
+import Bag from './components/Bag';
 import Clothing from './components/Clothing';
 import Materials from './components/Materials';
 import Measurements from './components/Measurements';
@@ -26,7 +26,7 @@ class App extends Component {
           <Route path='/gallery' component={Gallery} />
           <Route path='/about' component={About} />
           <Route path='/how-it-works' component={Howitworks} />
-          <Route path='/cart' component={Cart} />
+          <Route path='/bag' component={Bag} />
           <Route path='/clothing' component={Clothing} />
           <Route path='/materials' component={Materials} />
           <Route path='/measurements' component={Measurements} />

@@ -1,91 +1,53 @@
-import axios from 'axios';
-import getCustomerInfo from './../services/getCustomerInfo';
-
-
 const initialState = {
-	customer: {
-		id: '',
-		first_name: '',
-		last_name: '',
-		email: '',
-		address: '',
-		city: '',
-		state: '',
-		country: 'USA',
-		zip: '',
-		phone: '',
-		picture: '',
-		error: ''
+	bag: [],
+	measurements: {
+		Bust: '',
+		Chest: '',
+		Hip: '',
+		Shoulder: '',
+		Under_Bust: '',
+		Upper_Arm: '',
+		Waist: ''
 	}
 }
 
 // action types
-const GET_CUSTOMER_INFO = 'GET_CUSTOMER_INFO';
-const HANDLE_CHANGE = 'HANDLE_CHANGE';
-const HANDLE_SUBMIT = 'HANDLE_SUBMIT';
+const UPDATE_BAG = 'UPDATE_BAG';
+const UPDATE_MEASUREMENTS = 'UPDATE_MEASUREMENTS';
 
 // action creators
-// export function getCustomerInfoAction() {
-// 	console.log('reducer getCustomerInfo triggered');
+export function updateBag(garment) {
+	return {
+		type: UPDATE_BAG,
+		payload: garment
+	}
+};
+
+export function updateMeasurements(name, value) {
 	
-// 	getCustomerInfo().then(res => res)
-	
-// 	console.log('axios getcustomer in reducer =', res )
-	
-// 	return {
-// 		type: GET_CUSTOMER_INFO,
-// 		payload: responseData
-// 	}
-// }
-// export function handleChange(e) {
-// 	let newState = {};
-// 	newState[e.target.name] = e.target.value; 
-
-// 	return {
-// 		type: HANDLE_CHANGE,
-// 		payload: newState
-// 	}
-// 	// this.setState(newState);
-// };
-
-// export function handleSubmit() {
-// 	let formData = {
-// 		formaddress: this.state.customer.address,
-// 		formcity: this.state.customer.city,
-// 		formstate: this.state.customer.state,
-// 		formcountry: this.state.customer.country,
-// 		formzip: this.state.customer.zip,
-// 		formphone: this.state.customer.phone
-// 	}
-
-// 	var fullForm = () => {
-// 		if (formData.formaddress.length < 1 || formData.formcity.length < 1 || formData.formstate.length < 1 || formData.formcountry.length < 1 || formData.formzip.length < 1 || formData.formphone.length < 1) {
-// 			// return { error: 'Please fill in all fields'};
-// 		} else {
-// 			console.log('posted');
-// 			axios.post('/api/updateCustomer', this.state);
-// 		}
-// 	}
-// 	return {
-// 		type: HANDLE_SUBMIT,
-// 		payload: fullForm
-// 	}
-
-// }
+	return {
+		type: UPDATE_MEASUREMENTS,
+		name: name,
+		payload: value
+	}
+};
 
 // reducer function
 export default function reducer(state = initialState, action) {
+	// console.log('state',state)
 	switch (action.type) {
-		case 'GET_CUSTOMER_INFO':
-			console.log('reducer function case getCustomer triggered to update state');
-			return Object.assign({}, state, { customer: action.payload })
+		case 'UPDATE_BAG':
+			let tempBag = [...state.bag,action.payload];
+			// tempBag.push(action.payload)
+			return Object.assign({}, state, { bag: tempBag })
 
-		case 'HANDLE_CHANGE':
-			return Object.assign({}, state, { customer: action.payload })
-
-		case 'HANDLE_SUBMIT':
-			return Object.assign({}, state, { customer: action.payload })
-
+		case 'UPDATE_MEASUREMENTS':
+			
+			let	measures = Object.assign({}, state.measurements, { [action.name]: action.payload })
+			// console.log('reducer measurements',measures)
+			// console.log('state.measurements',state.measurements)
+			return Object.assign({}, state, { measurements: measures })
+		
 		default:
 			return state;
 	}

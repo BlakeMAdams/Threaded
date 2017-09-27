@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import menuIcon from '../img/home.png';
-import cartIcon from '../img/cart.svg';
+import bagIcon from '../img/cart.svg';
 import fbIcon from '../img/cart.svg';
 import instIcon from '../img/cart.svg';
 import { Link } from 'react-router-dom';
@@ -62,7 +62,7 @@ render() {
 								
 								{this.state.logged === false ? <a href={process.env.REACT_APP_LOGIN}>Log In</a> :
 									<a href={process.env.REACT_APP_LOGOUT}>Log Out</a>}
-								<Link to="/cart">Cart<img className="icon" src={cartIcon} alt="Cart" /></Link>
+								<Link to="/bag">Bag<img className="icon" src={bagIcon} alt="Bag" /></Link>
 								
 							</div>
 						</div>

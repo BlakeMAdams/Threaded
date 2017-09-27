@@ -9,17 +9,6 @@ import React, { Component } from 'react';
 
 
 export default class ProfileForm extends Component {
-	constructor(props) {
-		super(props);
-		// this.handleSubmit = this.handleSubmit.bind(this);
-
-		// this.state = { customer: props.state }
-	}
-	componentDidMount() {
-		console.log('profileform this.props =', this.props);
-	}
-	
-	
 
 	render() {
 		return (
