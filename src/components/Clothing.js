@@ -3,6 +3,7 @@ import ReactModal from 'react-modal';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+
 import Header from './Header';
 import Footer from './Footer';
 import { getClothing, getGallery, getMaterials } from './../services/clothingService';
@@ -17,6 +18,7 @@ class Clothing extends Component {
 			clothingCategory: '',
 			clothingSubCategory: '',
 			price: '',
+			image: '',
 			gallery: [],
 			materials: [],
 			materialPicked: '',
@@ -60,26 +62,16 @@ class Clothing extends Component {
 
 	addToBag() {
 		// add all items from state grouped to pull in order page
-		var garment = [this.state.clothingCategory, this.state.clothingSubCategory, this.state.price, this.state.materialPicked, this.state.defaultMeasurement, this.props.measurements];
+		var garment = [this.state.clothingCategory, this.state.clothingSubCategory, this.state.price, this.state.materialPicked, this.state.defaultMeasurement, this.props.measurements, this.state.image];
 
 		this.setState({
 			clothingCategory: '',
 			clothingSubCategory: '',
 			materialPicked: '',
 			price: ''
-			// measurements: {
-			// 	Bust: '',
-			// 	Chest: '',
-			// 	Hip: '',
-			// 	Shoulder: '',
-			// 	Under_Bust: '',
-			// 	Upper_Arm: '',
-			// 	Waist: ''
-			// }
+
 		})
 		this.props.updateBag(garment)
-
-
 
 	}
 
@@ -103,6 +95,9 @@ class Clothing extends Component {
 	}
 	priceChange(value) {
 		this.setState({ price: value }, () => console.log('price=', this.state.price));
+	}
+	setImage(url) {
+		this.setState({ image: url }, () => console.log('url=', this.state.image));
 	}
 
 	render() {
@@ -131,7 +126,7 @@ class Clothing extends Component {
 											this.state.clothing.filter((elem) => {
 												{/* console.log('filter', this.state.clothingCategory); */}
 												return elem.category === this.state.clothingCategory;
-											}).map((e, i) => (<button key={i} className='sub-categories' name={e.name} type='text' onClick={(event) => { this.subcatClick(event.target.value); this.priceChange(e.price) }} value={e.name}>{e.name}</button>))
+											}).map((e, i) => (<button key={i} className='sub-categories' name={e.name} type='text' onClick={(event) => { this.subcatClick(event.target.value); this.priceChange(e.price); this.setImage(e.image) }} value={e.name}>{e.name}</button>))
 										}
 										</nav>
 									</div>
@@ -146,6 +141,7 @@ class Clothing extends Component {
 												return (
 													<div key={i} className='clothing-item-display'>
 														<img className='clothing-item-display-img' src={e.image} alt='e.name' />
+														
 														<div className='clothing-item-details'>
 															<h3>{e.name}</h3>
 															<h4>${e.price}</h4>
@@ -174,7 +170,6 @@ class Clothing extends Component {
 													<p>Material {e.material}</p>
 												</div>)
 										})
-
 									}
 								</div>
 							</section>
@@ -256,37 +251,6 @@ class Clothing extends Component {
 							</div>
 						</section>
 
-						{/* <h2 className='step-title'>Step 4 : Review Your Garment</h2>
-						<section className='step'>
-							<div className='current-bag-display'>
-								<p>Design: {this.state.clothingCategory} {this.state.clothingSubCategory}</p>
-								<p>Material: {this.state.materialPicked}</p>
-								<p>Measurements:</p>
-								<ul>
-									<li>Chest <strong>{this.props.measurements.Chest}</strong></li>
-									<li>Bust <strong>{this.props.measurements.Bust}</strong></li>
-									<li>Under_Bust <strong>{this.props.measurements.Under_Bust}</strong></li>
-									<li>Shoulder <strong>{this.props.measurements.Shoulder}</strong></li>
-									<li>Upper_Arm <strong>{this.props.measurements.Upper_Arm}</strong></li>
-									<li>Hip <strong>{this.props.measurements.Hip}</strong></li>
-									<li>Waist <strong>{this.props.measurements.Waist}</strong></li>
-								</ul>
-
-							</div>
-
-							<div>
-								<button onClick={this.addToBag}><Link to='/bag'>Add To Bag</Link></button>
-							</div>
-							<div>
-
-							</div>
-						</section>
-						<section className='step'>
-							<h2 className='step-title'>All Done?</h2>
-							<button className='btn-link'><Link to='/bag'>Go To Your Bag</Link></button>
-
-						</section> */}
-
 					</section>
 				</div>
 				<Footer />
@@ -297,7 +261,8 @@ class Clothing extends Component {
 function mapStateToProps(state) {
 	return {
 		bag: state.bag,
-		measurements: state.measurements
+		measurements: state.measurements,
+		
 	}
 }
 let outputActions = {

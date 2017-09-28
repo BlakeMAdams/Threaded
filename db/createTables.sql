@@ -16,8 +16,8 @@ CREATE TABLE customers (
 CREATE TABLE orders (
 	id SERIAL PRIMARY KEY,
 	customer_id INTEGER REFERENCES customers (id),
-	clothing TEXT,
-	price INTEGER,
+	bag TEXT[],
+	total INTEGER,
 	notes TEXT,
 	status text,
 	order_date date not null default CURRENT_DATE

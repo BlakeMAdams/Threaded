@@ -28,7 +28,7 @@ export default class Profile extends Component {
 			picture: '',
 			error: ''
 
-		};
+		}
 
 		//bindings
 		this.handleChange = this.handleChange.bind(this);
@@ -71,36 +71,7 @@ export default class Profile extends Component {
 	};
 
 	handleSubmit() {
-		// let formData = {
-		// 	formaddress: this.state.address,
-		// 	formcity: this.state.city,
-		// 	formstate: this.state.state,
-		// 	formcountry: this.state.country,
-		// 	formzip: this.state.zip,
-		// 	formphone: this.state.phone
-		// }
-
-		// if (formData.formaddress.length < 1 || formData.formcity.length < 1 || formData.formstate.length < 1 || formData.formcountry.length < 1 || formData.formzip.length < 1 || formData.formphone.length < 1) {
-		// 	this.setState({
-		// 		error: 'Please fill in all fields'
-		// 	})
-		// } else {
-		// console.log('posted');
-
-		// var person = {
-		// 	id: this.state.id,
-		// 	first_name: this.state.first_name,
-		// 	last_name: this.state.last_name,
-		// 	email: this.state.email,
-		// 	address: this.state.address,
-		// 	city: this.state.city,
-		// 	state: this.state.state,
-
-		// 	zip: this.state.zip,
-		// 	phone: this.state.phone
-
-		// }
-		// console.log(person)
+	
 
 		return axios.post('/api/updateCustomer', this.state).then(res => {
 			console.log('response from updateCustomer post', res)
@@ -117,12 +88,7 @@ export default class Profile extends Component {
 				<div className="page">
 					<h1 className="title">Profile</h1>
 					<h4>Please make sure all your information is complete in order to make a purchase.</h4>
-					{/* ID = {this.state.id} <br />
-					First name = {this.state.first_name}<br />
-					Last name = {this.state.last_name}<br />
-					Email = {this.state.email} */}
 					<br />
-
 
 					<ProfileForm
 						state={this.state}

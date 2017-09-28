@@ -1,6 +1,4 @@
 require('dotenv').config();
-
-
 const express = require('express')
 , bodyParser = require('body-parser')
 , passport = require('passport')
@@ -16,7 +14,7 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 //NEED TO REVISE
-app.use( express.static( `${__dirname}/../public/build` ) );
+app.use( express.static( `${__dirname}/../build` ) );
 
 app.use(session({
   secret: process.env.SECRET,
@@ -117,9 +115,11 @@ app.get('/api/auth/setCustomer', (req, res) => {
  });
 
 
-//ENDPOINT update customer
+//ENDPOINT POSTS
 app.post('/api/updateCustomer', addToServer.updateCustomer);
-  
+app.post('/api/checkout', addToServer.addOrder);
+
+
 //ENDPOINTS FOR CLOTHING
 app.get('/api/getClothing', function(req,res,next){
 const db = app.get('db');
@@ -135,6 +135,7 @@ app.get('/api/getMaterials', function(req,res,next){
   const db = app.get('db');
   db.importMaterials().then( (materials)=> res.status(200).send(materials) )
 });
+
 
 app.get('/api/bottoms', controller.getBottoms);
 app.get('/api/shirts', controller.getShirts);

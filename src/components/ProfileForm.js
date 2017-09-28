@@ -1,11 +1,4 @@
 import React, { Component } from 'react';
-// import axios from 'axios';
-// import { connect } from 'react-redux';
-
-
-// import { getCustomerInfoAction } from './../ducks/reducer';
-// import { handleSubmit } from './../ducks/reducer';
-// import { handleChange } from './../ducks/reducer';
 
 
 export default class ProfileForm extends Component {
@@ -15,8 +8,6 @@ export default class ProfileForm extends Component {
 			<div id="profile-form">
 				<p>{this.props.error}</p>
 
-				
-				{/* <form className='react-form' action={axios.post('/api/updateCustomer', this.state)} method="post"> */}
 				<form className='react-form'>
 
 					<fieldset className='form-group'>
@@ -82,12 +73,7 @@ export default class ProfileForm extends Component {
 							</fieldset> */}
 
 					{/* THIS FORM DOES NOT UPDATE CORRECTLY, USING THE BUTTON IN ITS PARENT> Profile.js 
-					<div className='form-group'>
-						<button id='formButton' className='btn' onClick={() => {
-							this.props.handleSubmit()
-						}}>Update Profile</button>
-
-					</div> */}
+					*/}
 				</form>
 			</div>
 		)

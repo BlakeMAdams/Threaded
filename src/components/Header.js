@@ -4,16 +4,18 @@ import bagIcon from '../img/cart.svg';
 import fbIcon from '../img/cart.svg';
 import instIcon from '../img/cart.svg';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import getCustomerInfo from './../services/getCustomerInfo';
 
-export default class Header extends Component {
+ class Header extends Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
 			role: '',
 			logged: false
+			
 		};
 
 	}
@@ -26,7 +28,9 @@ export default class Header extends Component {
 					logged: res.logged
 				})
 			}
-		)}
+		)
+	}
+
 
 render() {
 	
@@ -44,9 +48,9 @@ render() {
 								<Link to="/about">About Threaded</Link>
 								<Link to="/how-it-works">How it Works</Link>
 								<Link to="/clothing">Clothing</Link>
-								<Link to="/materials">Materials</Link>
+								{/* <Link to="/materials">Materials</Link> */}
 								<Link to="/gallery">Gallery</Link>
-								<Link to="/measurements">Measurements</Link>
+								{/* <Link to="/measurements">Measurements</Link> */}
 
 							</div>
 						</div>
@@ -62,7 +66,7 @@ render() {
 								
 								{this.state.logged === false ? <a href={process.env.REACT_APP_LOGIN}>Log In</a> :
 									<a href={process.env.REACT_APP_LOGOUT}>Log Out</a>}
-								<Link to="/bag">Bag<img className="icon" src={bagIcon} alt="Bag" /></Link>
+								<Link to="/bag">Bag<img className="icon" src={bagIcon} alt="Bag" /> {this.props.bag.length}</Link>
 								
 							</div>
 						</div>
@@ -74,3 +78,11 @@ render() {
 }
 
 }
+
+function mapStateToProps(state) {
+	return {
+		bag: state.bag
+	}
+}
+
+export default connect(mapStateToProps)(Header)
