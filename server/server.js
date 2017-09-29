@@ -126,14 +126,25 @@ const db = app.get('db');
 db.importClothing().then( (clothing)=> res.status(200).send(clothing) )
 });
 
+app.get('/api/getMaterials', function(req,res,next){
+  const db = app.get('db');
+  db.importMaterials().then( (materials)=> res.status(200).send(materials) )
+});
+
+app.get('/api/getMiniGallery', function(req,res,next){
+  const db = app.get('db');
+  db.importMiniGallery().then( (gallery)=> res.status(200).send(gallery) )
+});
+
 app.get('/api/getGallery', function(req,res,next){
   const db = app.get('db');
   db.importGallery().then( (gallery)=> res.status(200).send(gallery) )
 });
 
-app.get('/api/getMaterials', function(req,res,next){
+app.get('/api/getOrderHistory', function(req,res,next){
   const db = app.get('db');
-  db.importMaterials().then( (materials)=> res.status(200).send(materials) )
+  console.log('hit getOrderHistory endpoint')
+  db.importOrderHistory([1]).then( (orders)=> res.status(200).send(orders) )
 });
 
 

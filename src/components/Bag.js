@@ -50,14 +50,16 @@ class Bag extends Component {
 		var moreBag = [];
 		for(let i = 0; i < this.props.bag.length; i++) {
 			let newBag = this.props.bag[i].slice(0,6);
-			 moreBag.push(newBag);
+			newBag.push('/END');
+			moreBag.push(newBag);
+
 		}
 		var totalBag = { 
 			bag: moreBag, 
 			total: priceTotal }
 		console.log('totalBag',totalBag);
 		return axios.post('/api/checkout', totalBag).then(res => {
-			console.log('post checkout res', res)
+			// console.log('post checkout res', res.data)
 		})
 	}
 

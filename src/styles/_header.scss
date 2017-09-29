@@ -2,10 +2,15 @@
     background-color: $white;
     border-bottom: 3px solid $sec-color;
 }
-
+header {
+    display: flex;
+    justify-content: center;
+}
 header nav {
     justify-content: center;
     flex-direction: column;
+    width: 100%;
+    max-width: 900px;
 }
 
 .title {

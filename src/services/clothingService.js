@@ -43,7 +43,12 @@ export function getGallery() {
     return axios.get('/api/getGallery').then(res => {
         return res.data;
     })
-
+}
+export function getMiniGallery() {
+    console.log('getMiniGallery fired');
+    return axios.get('/api/getMiniGallery').then(res => {
+        return res.data;
+    })
 }
 export function getMaterials() {
     console.log('get Materials fired');

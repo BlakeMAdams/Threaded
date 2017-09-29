@@ -1,0 +1,29 @@
+.order {
+	border: 2px solid #333;
+	border-top: 10px solid $prim-color;
+	border-bottom: 5px solid $prim-color;
+	margin-bottom: 20px;
+	box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
+}
+.order-details {
+	background-color: $sec-color;
+	
+	padding: 10px;
+	display:flex;
+	justify-content: space-around;
+	border-bottom: 1px solid #dedede;
+	
+}
+.order-details p {
+	color: $white;
+}
+.order-bag {
+	padding: 10px;
+	background-color:#fff;
+}
+.order-garment {
+	display: flex;
+	justify-content: space-around;
+	align-items: flex-start;
+	
+}

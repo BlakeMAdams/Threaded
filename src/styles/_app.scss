@@ -36,12 +36,16 @@ body {
 .content {
     border-radius: 2px;
     background-color: $white;
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
-    padding: 10px;
+    padding: 2rem;
+    margin-top: 2rem;
+    margin-right: auto;
+    margin-left: auto;
+    border-radius: 3px;
+    box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
 }
 
 .page {
-    max-width: 850px;
+    max-width: 900px;
     margin: 0 auto;
     background-color: $white;
     padding: 20px;

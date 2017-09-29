@@ -16,7 +16,7 @@ CREATE TABLE customers (
 CREATE TABLE orders (
 	id SERIAL PRIMARY KEY,
 	customer_id INTEGER REFERENCES customers (id),
-	bag TEXT[],
+	bag json,
 	total INTEGER,
 	notes TEXT,
 	status text,

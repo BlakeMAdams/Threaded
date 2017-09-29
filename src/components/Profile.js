@@ -6,8 +6,9 @@ import Header from './Header';
 import Footer from './Footer';
 
 import ProfileForm from './ProfileForm';
+import OrderHistory from './OrderHistory';
 // import { getCustomerInfoAction } from './../ducks/reducer';
-import getCustomerInfo from './../services/getCustomerInfo';
+import { getCustomerInfo } from './../services/customer';
 
 
 
@@ -71,7 +72,7 @@ export default class Profile extends Component {
 	};
 
 	handleSubmit() {
-	
+
 
 		return axios.post('/api/updateCustomer', this.state).then(res => {
 			console.log('response from updateCustomer post', res)
@@ -86,30 +87,43 @@ export default class Profile extends Component {
 			<div id="profile">
 				<Header />
 				<div className="page">
-					<h1 className="title">Profile</h1>
-					<h4>Please make sure all your information is complete in order to make a purchase.</h4>
-					<br />
+					<div className="row">
+						<div className="content">
+							<h1 className="title">My Profile</h1>
+							<h4>Please make sure all your information is complete in order to make a purchase.</h4>
 
-					<ProfileForm
-						state={this.state}
-						first_name={this.state.first_name}
-						last_name={this.state.last_name}
-						email={this.state.email}
-						address={this.state.address}
-						city={this.state.city}
-						state={this.state.state}
-						country={this.state.country}
-						zip={this.state.zip}
-						phone={this.state.phone}
-						picture={this.state.picture}
-						error={this.state.error}
-						handleChange={(e) => this.handleChange(e)}
-						handleSubmit={this.handleSubmit}
-					/>
-					<button id='formButton' className='btn' onClick={() => {
-						{/* console.log('clicked'); */ }
-						this.handleSubmit()
-					}}>Update Profile</button>
+
+							<ProfileForm
+								state={this.state}
+								first_name={this.state.first_name}
+								last_name={this.state.last_name}
+								email={this.state.email}
+								address={this.state.address}
+								city={this.state.city}
+								state={this.state.state}
+								country={this.state.country}
+								zip={this.state.zip}
+								phone={this.state.phone}
+								picture={this.state.picture}
+								error={this.state.error}
+								handleChange={(e) => this.handleChange(e)}
+								handleSubmit={this.handleSubmit}
+							/>
+							<button id='formButton' className='btn' onClick={() => {
+								{/* console.log('clicked'); */ }
+								this.handleSubmit()
+							}}>Update Profile</button>
+						</div>
+						<div className="content">
+							<h1 className="title">My Measurements</h1>
+						</div>
+					</div>
+					<div>
+						<div className="content">
+							<h1 className="title">My Orders</h1>
+							<OrderHistory />
+						</div>
+					</div>
 
 
 				</div>

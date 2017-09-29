@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 
 import Header from './Header';
 import Footer from './Footer';
-import { getClothing, getGallery, getMaterials } from './../services/clothingService';
+import { getClothing, getMiniGallery, getGallery, getMaterials } from './../services/clothingService';
 import { updateBag, updateMeasurements } from './../ducks/reducer';
 
 class Clothing extends Component {
@@ -44,7 +44,7 @@ class Clothing extends Component {
 
 			// console.log('state clothing:', this.state.clothing);
 		})
-		getGallery().then(response => {
+		getMiniGallery().then(response => {
 
 			this.setState({
 				gallery: response

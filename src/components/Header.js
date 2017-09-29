@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import menuIcon from '../img/home.png';
-import bagIcon from '../img/cart.svg';
+import bagIcon from '../img/icon_bag.png';
 import fbIcon from '../img/cart.svg';
 import instIcon from '../img/cart.svg';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import getCustomerInfo from './../services/getCustomerInfo';
+import { getCustomerInfo } from './../services/customer';
 
  class Header extends Component {
 	constructor(props) {
@@ -61,12 +61,13 @@ render() {
 								<img className="icon" src={instIcon} alt="instagram" />
 							</div>
 							<div className="flex">
+							<Link to="/profile">My Profile</Link>
 								{/* <a href={process.env.REACT_APP_LOGOUT}>LogOUT!</a> */}
-								{this.state.logged === true ? <Link to="/profile">Profile</Link> : ''}
+								{this.state.logged === true ? <Link to="/profile">My Profile</Link> : ''}
 								
 								{this.state.logged === false ? <a href={process.env.REACT_APP_LOGIN}>Log In</a> :
-									<a href={process.env.REACT_APP_LOGOUT}>Log Out</a>}
-								<Link to="/bag">Bag<img className="icon" src={bagIcon} alt="Bag" /> {this.props.bag.length}</Link>
+									<a href={process.env.REACT_APP_LOGOUT}>Log Out</a>} &nbsp;
+								<Link to="/bag"><img src={bagIcon} alt="Bag" /> {this.props.bag.length}</Link>
 								
 							</div>
 						</div>
