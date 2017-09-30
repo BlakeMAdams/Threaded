@@ -52,13 +52,13 @@ export default class OrderHistory extends Component {
 								// e[5] = { Bust, Chest, Hip, Shoulder, Upper_Bust, Upper_Arm, Waist }
 								var myForInLoop = [];
 								for (var key in e[5]) {
-									myForInLoop.push(<div className='measurements-lines'>{key + ' : ' + e[5][key]}</div>)
+									myForInLoop.push(<span key={key} className='measurements-lines'>{key + ' : ' + e[5][key]}</span>)
 								}
 
 								return (
 									<div key={i} className='order-garment'>
 										{/* <img className="gallery-images" src={e.image} alt={e.name} /> */}
-										<p>{e[0]}</p>
+										<p className='clothing-item-display'><img src={e[6]} alt={e[1]} /></p>
 										<p>NAME<br />{e[1]}</p>
 										<p>PRICE<br />${e[2]}</p>
 										<p>MATERIAL<br />{e[3]}</p>

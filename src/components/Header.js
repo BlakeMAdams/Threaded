@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import menuIcon from '../img/home.png';
-import bagIcon from '../img/icon_bag.png';
-import fbIcon from '../img/cart.svg';
-import instIcon from '../img/cart.svg';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { getCustomerInfo } from './../services/customer';
+
+import menuIcon from '../img/home.png';
+import bagIcon from '../img/icon_bag.png';
+import fbIcon from '../img/cart.svg';
+import instIcon from '../img/cart.svg';
 
  class Header extends Component {
 	constructor(props) {
@@ -41,7 +42,7 @@ render() {
 				<header>
 					<nav className="flex">
 						<div className="flex site-title">
-							<h1><Link to="/">Threaded</Link></h1>
+							<h1><Link to="/"> Threaded <img className="site-logo" src="http://www.pngall.com/wp-content/uploads/2017/01/Sewing-Needle-Transparent.png" alt="Threaded" /></Link></h1>
 							<p>High Quality Clothing Tailored To You</p>
 							<div className="flex main-nav">
 								<Link to="/">Home</Link>
@@ -53,6 +54,7 @@ render() {
 								{/* <Link to="/measurements">Measurements</Link> */}
 
 							</div>
+							<div className="mobile-menu"><img src={menuIcon} alt="menu" /></div>
 						</div>
 						<div className="flex main-nav-container">
 							<div className="flex">
@@ -61,7 +63,7 @@ render() {
 								<img className="icon" src={instIcon} alt="instagram" />
 							</div>
 							<div className="flex">
-							<Link to="/profile">My Profile</Link>
+							
 								{/* <a href={process.env.REACT_APP_LOGOUT}>LogOUT!</a> */}
 								{this.state.logged === true ? <Link to="/profile">My Profile</Link> : ''}
 								

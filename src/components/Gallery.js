@@ -18,7 +18,7 @@ export default class Gallery extends Component {
 			this.setState({
 				gallery: response
 			})
-			console.table('gallery',response)
+			console.log('gallery',response)
 		})
 	}
 
@@ -33,9 +33,10 @@ export default class Gallery extends Component {
 							return (
 								<div key={i} className='gallery-items'>
 									<img className="gallery-images" src={e.image} alt={e.name} />
-									{/* <p>{e.gallery.category}</p>
+									
 									<p>{e.name}</p>
-									<p>{e.material}</p> */}
+									<p>{e.mat_name}</p>
+									
 								</div>
 							)
 						})

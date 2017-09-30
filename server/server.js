@@ -5,10 +5,12 @@ const express = require('express')
 , Auth0Strategy = require('passport-auth0')
 , massive = require('massive')
 , session = require('express-session')
-, cors = require('cors');
+, cors = require('cors')
+, stripe = require('stripe')(process.env.REACT_APP_STRIPE_PRIVKEY)
+, logout = require('express-passport-logout');
 
 const addToServer = require('./controllers/addToServer');
-const controller = require('./controller');
+
 
 const app = express();
 app.use(cors());
@@ -91,8 +93,16 @@ app.get('/api/auth/login', passport.authenticate('auth0'));
 //ENDPOINT (Logout)
 app.get('/api/auth/logout', (req, res) => {
   req.logout() //PASSPORT GIVES US THIS TO TERMINATE A LOGIN SESSION
-  console.log('req.user', req.user);
-  return res.redirect(302, 'http://localhost:3000/#/'); //res.redirect comes from express to redirect user to the given url
+  // said OK after // https://blakemadams.auth0.com/v2/logout?federated&returnTo%3Dhttp%3A%2F%2Flocalhost:3000&access_token=[facebook access_token]
+  // said error after // https://blakemadams.auth0.com/v2/logout?federated&returnTo=https%3A%2F%2Fblakemadams.auth0.com%2Flogout%3FreturnTo%3Dhttp%3A%2F%2Flocalhost:3000&access_token=[facebook access_token]
+  req.session.destroy()
+  return res.status(200).redirect('http://www.apple.com') 
+
+  
+  
+  // console.log('req.user', req.user);
+
+  // return res.redirect(302, 'http://localhost:3000/#/'); //res.redirect comes from express to redirect user to the given url
     //302 is the status code for redirect
 });
 
@@ -144,14 +154,49 @@ app.get('/api/getGallery', function(req,res,next){
 app.get('/api/getOrderHistory', function(req,res,next){
   const db = app.get('db');
   console.log('hit getOrderHistory endpoint')
-  db.importOrderHistory([1]).then( (orders)=> res.status(200).send(orders) )
+  db.importOrderHistory([req.user.id]).then( (orders)=> res.status(200).send(orders) )
 });
 
 
-app.get('/api/bottoms', controller.getBottoms);
-app.get('/api/shirts', controller.getShirts);
-app.get('/api/dresses', controller.getDresses);
-app.get('/api/patterns', controller.getPatterns);
+// STRIPE
+
+app.post('/api/payment', function(req, res, next){
+  //convert amount to pennies
+  const amountArray = req.body.amount.toString().split('');
+  const pennies = [];
+  for (var i = 0; i < amountArray.length; i++) {
+    if(amountArray[i] === ".") {
+      if (typeof amountArray[i + 1] === "string") {
+        pennies.push(amountArray[i + 1]);
+      } else {
+        pennies.push("0");
+      }
+      if (typeof amountArray[i + 2] === "string") {
+        pennies.push(amountArray[i + 2]);
+      } else {
+        pennies.push("0");
+      }
+    	break;
+    } else {
+    	pennies.push(amountArray[i])
+    }
+  }
+  const convertedAmt = parseInt(pennies.join(''));
+
+  const charge = stripe.charges.create({
+  amount: convertedAmt, // amount in cents, again
+  currency: 'usd',
+  source: req.body.token.id,
+  description: 'Test charge from react app'
+}, function(err, charge) {
+    if (err) return res.sendStatus(500)
+    return res.sendStatus(200);
+  // if (err && err.type === 'StripeCardError') {
+  //   // The card has been declined
+  // }
+});
+});
+
 
 let PORT = 3050;
 app.listen(PORT, () => {

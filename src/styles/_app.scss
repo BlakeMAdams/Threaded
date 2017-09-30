@@ -34,10 +34,9 @@ body {
 }
 
 .content {
-    border-radius: 2px;
     background-color: $white;
-    padding: 2rem;
-    margin-top: 2rem;
+    padding: 1rem;
+    margin-top: 1rem;
     margin-right: auto;
     margin-left: auto;
     border-radius: 3px;
@@ -89,4 +88,56 @@ a:active {
 .icon {
   width: 35px;
   height: 35px;
+}
+.site-logo {
+    width:40px;
+}
+.mobile-menu { display: none;}
+.btn, .select-btn {
+    display: inline-block;
+    padding: .75rem 2rem;
+    margin-top: 1.618rem;
+    font-weight: 400;
+    text-align: center;
+    text-transform: uppercase;
+    color: $white !important;
+    vertical-align: middle;
+    white-space: nowrap;
+    background-color: $btn-color;
+    border: 1px solid transparent;
+    box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-transition: all 0.25s cubic-bezier(0.4, 0, 1, 1);
+    transition: all 0.25s cubic-bezier(0.4, 0, 1, 1);
+}
+.btn:focus,
+.btn:hover {
+    background-color: $btn-highlight;
+    box-shadow: 0 18px 35px rgba(50, 50, 93, 0.1), 0 8px 15px rgba(0, 0, 0, 0.07);
+}
+.btn:focus {
+    outline: 0;
+}
+.btn a:focus, .btn a:hover, .btn a:visited, .btn a:link {
+    
+    outline: 0;
+    color: $white;
+}
+.select-btn {
+    padding: .5rem;
+    margin: .5rem;
+}
+@media (max-width: 426px){
+    body {
+        margin: 0; padding: 0;
+    }
+    .page {
+        padding: 10px 0;
+        max-width: 425px;
+    }
+    .mobile-menu { display: block;}
 }

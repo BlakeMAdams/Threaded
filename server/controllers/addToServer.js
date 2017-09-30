@@ -9,32 +9,18 @@ module.exports = {
 
 		const dbInstance = req.app.get('db');
 		dbInstance.updateCustomerSQL([id, first_name, last_name, email, address, city, state, country, zip, phone])
-			.then(() => res.redirect(302, 'http://localhost:3000/#/').send('customer updated')).catch(err => {
-				console.log(err)
-				res.status(500).send()
-			})
+			.then(() => res.status(200))
 
 	},
 
-	addOrder: (req,res,next) => {
-		// console.log('addOrder req.body =', req.body);
-		// var id = req.user.id;
-		// console.log('id=', id);
-		// console.log('req.user fd', req.user.id);
-		console.log('req.body.bag',req.body.bag);
-		console.log('req.body.total',req.body.total);
+	addOrder: (req, res, next) => {
+		console.log('addOrder ran /Bag totalBag=', req.body.total)
+		var id = req.user.id;
 		var stringBag = JSON.stringify(req.body.bag);
-		console.log('stringBag',stringBag);
 		const dbInstance = req.app.get('db');
-		
-		dbInstance.addOrderSQL([1, stringBag, req.body.total, 'no special notes'])
-			.then(() => res.redirect(302, 'http://localhost:3000/#/order-complete')).catch(err => {
-				console.log('addOrder Error',err)
-				
-			})
+		dbInstance.addOrderSQL([id, stringBag, req.body.total, 'no special notes'])
+			.then(() => res.status(200))
 
-
-			
 	}
 
 }

@@ -27,7 +27,8 @@ export default class Profile extends Component {
 			zip: '',
 			phone: '',
 			picture: '',
-			error: ''
+			error: '',
+			logged: false
 
 		}
 
@@ -38,6 +39,7 @@ export default class Profile extends Component {
 	}
 
 	componentDidMount() {
+		
 		getCustomerInfo().then(
 			res => {
 				this.setState({
@@ -61,6 +63,14 @@ export default class Profile extends Component {
 				}
 			}
 		)
+		
+			// if (!this.state.logged) {
+			// 	console.log('checklogged ran')
+			// 	return axios.get('/api/auth/login').then(response => {
+			// 		return response.data;
+			// 	})
+			// }
+		
 
 	}
 
@@ -72,8 +82,6 @@ export default class Profile extends Component {
 	};
 
 	handleSubmit() {
-
-
 		return axios.post('/api/updateCustomer', this.state).then(res => {
 			console.log('response from updateCustomer post', res)
 
@@ -87,14 +95,15 @@ export default class Profile extends Component {
 			<div id="profile">
 				<Header />
 				<div className="page">
-					<div className="row">
-						<div className="content">
+				<h4>Please make sure all your information is complete in order to make a purchase.</h4>
+					
+						
 							<h1 className="title">My Profile</h1>
-							<h4>Please make sure all your information is complete in order to make a purchase.</h4>
+							<div id="profile-form">
 
 
 							<ProfileForm
-								state={this.state}
+								
 								first_name={this.state.first_name}
 								last_name={this.state.last_name}
 								email={this.state.email}
@@ -109,21 +118,20 @@ export default class Profile extends Component {
 								handleChange={(e) => this.handleChange(e)}
 								handleSubmit={this.handleSubmit}
 							/>
-							<button id='formButton' className='btn' onClick={() => {
-								{/* console.log('clicked'); */ }
+							<center><button id='formButton' className='btn' onClick={() => {
+								console.log('handleSubmit clicked')
 								this.handleSubmit()
-							}}>Update Profile</button>
+							}}>Update Profile</button></center>
 						</div>
-						<div className="content">
+						{/* <div className="content fifty">
 							<h1 className="title">My Measurements</h1>
-						</div>
-					</div>
-					<div>
-						<div className="content">
+						</div> */}
+					
+						<div>
 							<h1 className="title">My Orders</h1>
 							<OrderHistory />
 						</div>
-					</div>
+					
 
 
 				</div>

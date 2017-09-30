@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 import { removeGarment } from './../ducks/reducer';
 
+import trashIcon from '../img/trashcan.png';
+
 class Garment extends Component {
 	
 	// componentWillReceiveProps(nextProps){
@@ -28,10 +30,7 @@ class Garment extends Component {
 
 	render() {
 		
-		// var index = this.props.index;
-		// console.log('/garment bag=', this.props.bag)
-		// console.log('index',index);
-		{console.log()}
+
 		return (
 			<div className="bag-item-row">
 				<div className="product-col">
@@ -49,7 +48,7 @@ class Garment extends Component {
 				
 				<div className="price-col">${this.props.garment[2]}</div>
 				<div className="remove-col">
-					<button value={this.props.index} onClick={(e) => { this.props.removeGarment(e.target.value) }}>Remove Item <img src='' alt='' /></button>
+					<button value={this.props.index} onClick={(e) => { this.props.removeGarment(e.target.value) }}><img src={trashIcon} alt='Remove Item' /></button>
 				</div>
 
 

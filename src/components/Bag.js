@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import StripeCheckout from 'react-stripe-checkout';
+import { Link } from 'react-router-dom';
 
 import Header from './Header';
 import Footer from './Footer';
@@ -8,60 +10,38 @@ import Garment from './Garment';
 // import getCustomerInfo from './../services/getCustomerInfo';
 
 class Bag extends Component {
-	constructor(props) {
-		super(props);
+	constructor(){
+		super();
 
-		// this.state = {
-		// 	customer: {
-		// 		first_name: '',
-		// 		last_name: '',
-		// 		email: '',
-		// 		address: '',
-		// 		city: '',
-		// 		state: '',
-		// 		country: '',
-		// 		zip: '',
-		// 		phone: ''
-		// 	}
-		// }
-	}
-
-	componentDidMount() {
-		// getCustomerInfo().then(
-		// 	res => {
-		// 		this.setState({
-		// 			customer: {
-		// 				first_name: res.first_name,
-		// 				last_name: res.last_name,
-		// 				email: res.email,
-		// 				address: res.address,
-		// 				city: res.city,
-		// 				state: res.state,
-		// 				zip: res.zip,
-		// 				phone: res.phone
-		// 			}
-		// 		})
-		// 	}
-		// )
+		this.state = {
+			stripeTotal : 0
+		}
 	}
 
 	checkout(priceTotal) {
-		console.log('bag',this.props.bag)	
-		var moreBag = [];
-		for(let i = 0; i < this.props.bag.length; i++) {
-			let newBag = this.props.bag[i].slice(0,6);
-			newBag.push('/END');
-			moreBag.push(newBag);
 
-		}
 		var totalBag = { 
-			bag: moreBag, 
+			bag: this.props.bag, 
 			total: priceTotal }
-		console.log('totalBag',totalBag);
+			
+		priceTotal *= 100;
+		this.setState ({
+			stripeTotal : priceTotal
+		}, () => console.log('stripetotal',this.state.stripeTotal))
+		
 		return axios.post('/api/checkout', totalBag).then(res => {
-			// console.log('post checkout res', res.data)
+			
 		})
 	}
+	
+
+	onToken = (token) => {
+		token.card = void 0;
+		console.log('token', token);
+		axios.post('http://localhost:3050/api/payment', { token, amount: this.state.stripeTotal } ).then(response => {
+		  alert('Thank you for your business.')
+		});
+	  }
 
 	render() {
 				var priceTotal = 0;
@@ -88,7 +68,20 @@ class Bag extends Component {
 					<div className='total-col'><strong>Total: &nbsp; ${priceTotal}</strong></div>
 				</section>
 				<section>
-					<button onClick={() => this.checkout(priceTotal)}>Check Out</button>
+					
+				</section>
+				{/* <Link to="/order-complete"></Link> */}
+				<section>
+					<StripeCheckout
+						token={this.onToken}
+						stripeKey={ process.env.REACT_APP_STRIPE_PUBKEY }
+						amount={this.state.stripeTotal}
+						name="Threaded"
+						currency="USD"
+						
+						>
+						<button className="btn" onClick={() => this.checkout(priceTotal)}>Check Out</button>
+						</StripeCheckout>
 				</section>
 			</div>
 			<Footer />

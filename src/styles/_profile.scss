@@ -1,15 +1,17 @@
+  #profile-form {
+    padding: 2rem;
+    margin-top: 2rem;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 55rem;
+    background-color: #fff;
+    border-radius: 3px;
+    box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
+  }
   #profile,
   #profile-form {
-      form {
-        //   padding: 2rem;
-        //   margin-top: 2rem;
-        //   margin-right: auto;
-        //   margin-left: auto;
-        //   max-width: 55rem;
-        //   background-color: $white;
-        //   border-radius: 3px;
-        //   box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
-      }
+    
+
       .form-group {
           padding: 0;
           border: 0;
@@ -33,16 +35,17 @@
           font-size: 1rem;
           line-height: 1.25;
           color: #55595c;
-          background-color: $white;
+          background-color: #F8FDFE;
           background-image: none;
           background-clip: padding-box;
-          border-top: 0;
-          border-right: 0;
-          border-bottom: 1px solid #eee;
-          border-left: 0;
+          border-top: 1px solid #ddd;
+          border-right: 1px solid #ddd;
+          border-bottom: 1px solid #ddd;
+          border-left: 1px solid #ddd;
           border-radius: 3px;
           -webkit-transition: all 0.25s cubic-bezier(0.4, 0, 1, 1);
           transition: all 0.25s cubic-bezier(0.4, 0, 1, 1);
+          
       }
       input:focus,
       textarea:focus {
@@ -52,37 +55,6 @@
       textarea {
           resize: vertical;
       }
-      .btn {
-          display: inline-block;
-          padding: .75rem 1rem;
-          margin-top: 1.618rem;
-          font-weight: 400;
-          text-align: center;
-          text-transform: uppercase;
-          color: $white;
-          vertical-align: middle;
-          white-space: nowrap;
-          background-color: $btn-color;
-          border: 1px solid transparent;
-          box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
-          cursor: pointer;
-          -webkit-user-select: none;
-          -moz-user-select: none;
-          -ms-user-select: none;
-          user-select: none;
-          -webkit-transition: all 0.25s cubic-bezier(0.4, 0, 1, 1);
-          transition: all 0.25s cubic-bezier(0.4, 0, 1, 1);
-      }
-      .btn:focus,
-      .btn:hover {
-          background-color: $btn-highlight;
-          box-shadow: 0 18px 35px rgba(50, 50, 93, 0.1), 0 8px 15px rgba(0, 0, 0, 0.07);
-      }
-      .btn:focus {
-          outline: 0;
-      }
-    .row {
-        display:flex;
-        justify-content: space-between;
-    }
+      
+      
   }

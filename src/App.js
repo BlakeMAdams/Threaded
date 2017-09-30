@@ -12,6 +12,7 @@ import Clothing from './components/Clothing';
 import Materials from './components/Materials';
 import Measurements from './components/Measurements';
 import MeasureMyself from './components/MeasureMyself';
+import OrderComplete from './components/OrderComplete';
 
 
 class App extends Component {
@@ -30,7 +31,8 @@ class App extends Component {
           <Route path='/clothing' component={Clothing} />
           <Route path='/materials' component={Materials} />
           <Route path='/measurements' component={Measurements} />
-          <Route pathe='/measure-myself' component={MeasureMyself} />
+          <Route path='/measure-myself' component={MeasureMyself} />
+          <Route path='/order-complete' component={OrderComplete} />
          
         </Switch>
 

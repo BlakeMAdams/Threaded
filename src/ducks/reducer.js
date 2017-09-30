@@ -1,7 +1,5 @@
 const initialState = {
-	bag: [
-		["Dresses", "Chelsea", 70, "Polka Dots", "no default measurement", { Bust: "20", Chest: "20", Hip: "22", Shoulder: "20", Under_Bust: "21", Upper_Arm: "20", Waist: "25" }, 'http://img1.eshakti.com/clothImages/CL0046481ML.jpg']
-	],
+	bag: [],
 	measurements: {
 		Bust: '',
 		Chest: '',

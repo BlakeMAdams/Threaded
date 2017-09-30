@@ -5,9 +5,9 @@ export default class ProfileForm extends Component {
 
 	render() {
 		return (
-			<div id="profile-form">
-				<p>{this.props.error}</p>
-
+			<div>
+				{/* <p>{this.props.error}</p> */}
+				<img src={this.props.image} alt={this.props.first_name} />
 				<form className='react-form'>
 
 					<fieldset className='form-group'>
@@ -21,6 +21,7 @@ export default class ProfileForm extends Component {
 
 						<input id='formLastName' className='form-input' name='last_name' type='text' onChange={(e) => this.props.handleChange(e)} value={this.props.last_name} />
 					</fieldset>
+
 
 					<fieldset className='form-group'>
 						<label>Email:</label>
@@ -64,16 +65,6 @@ export default class ProfileForm extends Component {
 						<input id='formPhone' className='form-input' name='phone' type='text' onChange={(e) => this.props.handleChange(e)} value={this.props.phone} />
 					</fieldset>
 
-
-
-					{/* used for notes on order <fieldset className='form-group'>
-							<label title='Message:' />
-			
-							<textarea id='formMessage' className='form-textarea' name='message' required onChange={this.props.handleChange}></textarea>
-							</fieldset> */}
-
-					{/* THIS FORM DOES NOT UPDATE CORRECTLY, USING THE BUTTON IN ITS PARENT> Profile.js 
-					*/}
 				</form>
 			</div>
 		)
@@ -81,16 +72,3 @@ export default class ProfileForm extends Component {
 
 
 }
-// function mapStateToProps(state) {
-// 	console.log('mapStateToProps state.customer' + JSON.stringify(state.customer))
-// 	return {
-// 		customer: state.customer
-// 	}
-// }
-
-// let outputActions = {
-// 	getCustomerInfoAction,
-// 	handleChange
-// }
-
-// export default connect(mapStateToProps, outputActions)(ProfileForm);
