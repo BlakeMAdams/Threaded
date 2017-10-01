@@ -48,7 +48,8 @@ class Garment extends Component {
 				
 				<div className="price-col">${this.props.garment[2]}</div>
 				<div className="remove-col">
-					<button value={this.props.index} onClick={(e) => { this.props.removeGarment(e.target.value) }}><img src={trashIcon} alt='Remove Item' /></button>
+					{console.log('props.index', this.props.index)}
+					<button onClick={() => { this.props.removeGarment(this.props.index) }}><img src={trashIcon} alt='Remove Item' /></button>
 				</div>
 
 

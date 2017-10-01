@@ -137,6 +137,7 @@ button.sub-categories {
 
 button.sub-categories:focus {
     background-color: $btn-color;
+    border-color: $btn-color;
     color: $white;
 }
 

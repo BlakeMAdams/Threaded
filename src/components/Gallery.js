@@ -60,36 +60,43 @@ export default class Gallery extends Component {
 		return (this.state.gallery.filter((elem) => {
 			// cat true subcat false mat false
 			if (this.state.clothingCategory !== 'SELECT' && this.state.clothingSubCategory === 'SELECT' && this.state.material === 'SELECT') {
+				console.log('returning cat')
 				return elem.category === this.state.clothingCategory;
 			}
 
 			// cat true subcat true mat false
 			if (this.state.clothingCategory !== 'SELECT' && this.state.clothingSubCategory !== 'SELECT' && this.state.material === 'SELECT') {
+				console.log('returning cat subcat')
 				return elem.category === this.state.clothingCategory && elem.name === this.state.clothingSubCategory;
 			}
 
 			// cat true subcat true mat true
 			if (this.state.clothingCategory !== 'SELECT' && this.state.clothingSubCategory !== 'SELECT' && this.state.material !== 'SELECT') {
+				console.log('returning cat subcat mat')
 				return elem.category === this.state.clothingCategory && elem.name === this.state.clothingSubCategory && elem.mat_name === this.state.material;
 			}
 
 			// cat false subcat true mat true
 			if (this.state.clothingCategory === 'SELECT' && this.state.clothingSubCategory !== 'SELECT' && this.state.material !== 'SELECT') {
+				console.log('returning subcat mat')
 				return elem.name === this.state.clothingSubCategory && elem.mat_name === this.state.material;
 			}
 
 			// cat false subcat true mat false
 			if (this.state.clothingCategory === 'SELECT' && this.state.clothingSubCategory !== 'SELECT' && this.state.material === 'SELECT') {
+				console.log('returning subcat')
 				return elem.name === this.state.clothingSubCategory;
 			}
 
 			// cat false subcat false mat true
 			if (this.state.clothingCategory === 'SELECT' && this.state.clothingSubCategory === 'SELECT' && this.state.material !== 'SELECT') {
+				console.log('returning material')
 				return elem.mat_name === this.state.material;
 			}
 
 			// cat false subcat false mat false
 			if (this.state.clothingCategory === 'SELECT' && this.state.clothingSubCategory === 'SELECT' && this.state.material === 'SELECT') {
+				console.log('returning full gallery')
 				return this.state.gallery;
 			}
 

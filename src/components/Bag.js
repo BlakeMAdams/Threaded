@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import StripeCheckout from 'react-stripe-checkout';
-import { Link } from 'react-router-dom';
+
 
 import Header from './Header';
 import Footer from './Footer';
@@ -60,6 +60,7 @@ class Bag extends Component {
 					</div>
 					{this.props.bag.map((garment, i) => {
 						priceTotal += (garment[2])
+						console.log('i=', i)
 						return <Garment key={i} index={i} garment={garment} />;
 					}
 					)}

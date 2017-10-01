@@ -80,7 +80,9 @@ a:hover,
 a:focus {
     color: $sec-color;
 }
-
+textarea:focus,input:focus, a:focus, button:focus, select:focus {
+    outline: $btn-highlight;
+}
 a:active {
     color: $btn-color;
 }
