@@ -51,7 +51,7 @@ render() {
 								<Link to="/clothing">Clothing</Link>
 								{/* <Link to="/materials">Materials</Link> */}
 								<Link to="/gallery">Gallery</Link>
-								{/* <Link to="/measurements">Measurements</Link> */}
+								{/* <Link to="/measureme-myself">Measure Myself</Link> */}
 
 							</div>
 							<div className="mobile-menu"><img src={menuIcon} alt="menu" /></div>

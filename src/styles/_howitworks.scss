@@ -1,3 +1,37 @@
-hiw-title {
+.hiw-container {
+	display: flex;
+	flex-wrap: wrap;
+}
+.hiw-title {
 	font-family: 'montserrat', Helvetica;
+	font-size: 30px;
+}
+.hiw-explain {
+	padding: 40px 25px;
+}
+.hiwitalics {
+	font-style: italic;
+	font-size: 15px;
+	text-align: center;
+	display: block;
+	letter-spacing: 1px;
+	margin-bottom: 20px;
+}
+.hiwimg {
+
+}
+.l-hiwimg {
+
+}
+.col50 {
+	width: 50%;
+}
+.hiwimg img, .l-hiwimg img {
+	max-width: 500px;
+	width: 100%;
+	height: auto;
+}
+.hiw-button {
+	display: block;
+	text-align: center;
 }
