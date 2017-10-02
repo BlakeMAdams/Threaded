@@ -25,9 +25,15 @@
 	display: flex;
 	justify-content: space-around;
 	align-items: flex-start;
-	
+	padding: 20px 0;
 }
 .clothing-item-display img {
 	max-width: 200px;
 	max-height: 300px;
+}
+#order-history .clothing-item-display {
+	margin: 0;
+}
+.measurements-lines {
+	display:block;
 }

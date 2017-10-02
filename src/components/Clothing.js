@@ -110,7 +110,7 @@ class Clothing extends Component {
 
 					<section className="content-main">
 
-						<h2 className='step-title'>Step 1 : Select Your Design</h2>
+						<h2 className='hiw-title'><span>1.</span> Select Your Design</h2>
 						<section className='step'>
 							<section className='clothing-row'>
 								<div>
@@ -174,7 +174,7 @@ class Clothing extends Component {
 						</section>
 
 
-						<h2 className='step-title' id="step2">Step 2 : Customize Your Material</h2>
+						<h2 className='hiw-title'><span>2.</span> Customize Your Material</h2>
 						<section className='step'>
 							<div className="materials-container">
 								{
@@ -194,7 +194,7 @@ class Clothing extends Component {
 							</div>
 						</section>
 
-						<h2 className='step-title' id="step3">Step 3 : Select Your Measurements For A Custom Fit</h2>
+						<h2 className='hiw-title'><span>3.</span> Select Your Measurements For A Custom Fit</h2>
 						<section className='step'>
 							<div className='measurements-container'>
 								<p>Need help measuring? <button className='no-btn-look'><Link to='/measure-myself'>How To Measure Myself</Link></button></p>

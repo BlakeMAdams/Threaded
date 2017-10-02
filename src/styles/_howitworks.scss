@@ -3,11 +3,14 @@
 	flex-wrap: wrap;
 }
 .hiw-title {
-	font-family: 'montserrat', Helvetica;
 	font-size: 30px;
+}
+.hiw-title span {
+	font-family: 'Satisfy','Lobster Two','Lobster','Open Sans', 'Helvetica','Arial', sans-serif;
 }
 .hiw-explain {
 	padding: 40px 25px;
+	
 }
 .hiwitalics {
 	font-style: italic;
@@ -17,14 +20,12 @@
 	letter-spacing: 1px;
 	margin-bottom: 20px;
 }
-.hiwimg {
-
-}
-.l-hiwimg {
-
+.hiwimg, .l-hiwimg {
+	padding: 20px 0;
 }
 .col50 {
 	width: 50%;
+	border-top: 10px solid $btn-color;
 }
 .hiwimg img, .l-hiwimg img {
 	max-width: 500px;
@@ -34,4 +35,13 @@
 .hiw-button {
 	display: block;
 	text-align: center;
+}
+@media (max-width: 426px){
+	.hiwimg, .l-hiwimg {
+		display: none;
+	}
+	.hiw-explain { width: 100%; display: block; }
+	.col50 {
+		border-top: 20px solid $btn-color;
+	}
 }

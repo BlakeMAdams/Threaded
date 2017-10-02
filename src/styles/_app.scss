@@ -7,6 +7,8 @@
   #3498DB lblue
   #2980B9 mblue 
   #141C24 blackblue
+
+  
 */
 
 $prim-color: #2C3E50;
@@ -17,10 +19,15 @@ $btn-highlight: #FF5442;
 $bg-color: #141C24;
 $txt-color: #141C24;
 $white: #ECF0F1;
-@import url("https://fonts.googleapis.com/css?family=Open+Sans");
-$font-stack: 'Open Sans',
-Helvetica,
-sans-serif;
+
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|Satisfy");
+/* |Lobster|Lobster+Two   font-family: 'Lobster', 'Lobster Two', 'Satisfy', 'Open Sans'; */
+
+$font-stack: 
+    'Open Sans',
+    Helvetica, arial,
+    sans-serif;
+
 * {
     box-sizing: border-box;
 }
@@ -48,10 +55,10 @@ body {
     margin: 0 auto;
     background-color: $white;
     padding: 20px;
+   
 }
 
 body,
-h1,
 h2,
 h3,
 h4,
@@ -61,12 +68,17 @@ ul,
 li {
     font-family: $font-stack;
     font-weight: 400;
-    color: $prim-color;
+    color: $txt-color;
 }
-h1 { font-style: italic;}
+h1 { 
+    font-size: 40px;
+    color: $txt-color; 
+    font-family: 'Satisfy', 'Open Sans', 'Helvetica', 'Arial', sans-serif
+}
+
 p { margin: .8em 0;}
 a {
-    color: $prim-color;
+    color: $sec-color;
 }
 
 a,
@@ -78,7 +90,7 @@ a:active {
 
 a:hover,
 a:focus {
-    color: $sec-color;
+    color: $btn-color;
 }
 textarea:focus,input:focus, a:focus, button:focus, select:focus {
     outline: $btn-highlight;
@@ -142,4 +154,7 @@ a:active {
         max-width: 425px;
     }
     .mobile-menu { display: block;}
+    .page h1 {
+        margin-left: 10px;
+    }
 }

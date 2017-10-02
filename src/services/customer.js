@@ -2,10 +2,10 @@ import axios from 'axios';
 
 export function getCustomerInfo() {
 
-	console.log('running axios to setCustomer in getCustomerInfo/customerInfo function');
+	console.log('getCustomerInfo -> axios to setCustomer ran');
 	return axios.get('/api/auth/setCustomer').then(response => {
 		if (!response.country) { response.country = 'USA' }
-		console.log('**IMPORTANT** getCustomerInfo response of response.data =', response.data)
+		console.log('getCustomerInfo response of response.data =', response.data)
 		return response.data;
 	})
 
@@ -17,6 +17,14 @@ export function getOrderHistory() {
 		return response.data;
 	})
 
+}
+
+export function sendMail(bag) {
+	console.log('sendMail ran', bag)
+	return axios.post('http://localhost:3050/api/sendMail', bag).then(response => {
+		return response;
+	})
+	
 }
 
 // export function checkLogged() {

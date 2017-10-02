@@ -44,7 +44,7 @@ passport.use(new Auth0Strategy({
   const db = app.get('db');
     
 	db.findCustomer(profile.id).then(user => {
-    console.log('findingCustomer user', user);
+    console.log('findingCustomer user');
 		if (user[0]){
 			return done(null, user[0]);
 		} else {
@@ -96,7 +96,7 @@ app.get('/api/auth/logout', (req, res) => {
   // said OK after // https://blakemadams.auth0.com/v2/logout?federated&returnTo%3Dhttp%3A%2F%2Flocalhost:3000&access_token=[facebook access_token]
   // said error after // https://blakemadams.auth0.com/v2/logout?federated&returnTo=https%3A%2F%2Fblakemadams.auth0.com%2Flogout%3FreturnTo%3Dhttp%3A%2F%2Flocalhost:3000&access_token=[facebook access_token]
   req.session.destroy()
-  return res.status(200).redirect('http://www.apple.com') 
+  return res.status(200).redirect('http://localhost:3000') 
 
   
   
@@ -157,6 +157,7 @@ app.get('/api/getOrderHistory', function(req,res,next){
   db.importOrderHistory([req.user.id]).then( (orders)=> res.status(200).send(orders) )
 });
 
+app.post('/api/sendMail', addToServer.nodeMail)
 
 // STRIPE
 

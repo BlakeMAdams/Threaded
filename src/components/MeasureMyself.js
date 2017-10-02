@@ -10,7 +10,7 @@ export default class MeasureMyself extends Component {
 				<Header />
 				<div className="page">
 				<h1 className="title">How To Measure Yourself</h1>
-				<iframe width="560" height="315" src="https://www.youtube.com/embed/B_hsEUpHFEA?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+				<iframe title="measure-myself" width="560" height="315" src="https://www.youtube.com/embed/B_hsEUpHFEA?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
 				</div>
 				<Footer />
 			</div>

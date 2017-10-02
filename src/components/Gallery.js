@@ -41,7 +41,8 @@ export default class Gallery extends Component {
 	handleChange(name, value) {
 		console.log('change name', name);
 		console.log('change val', value);
-		this.setState({ [name]: value });
+		
+		this.setState({ [name]: value }, () => console.log('state',this.state));
 		this.galleryDisplay();
 
 	}
@@ -58,10 +59,27 @@ export default class Gallery extends Component {
 	}
 	galleryDisplay() {
 		return (this.state.gallery.filter((elem) => {
+
+			// bypass filtering to original non complex filter
+			// if (this.state.clothingCategory === 'SELECT' && this.state.clothingSubCategory === 'SELECT' && this.state.material === 'SELECT') {
+			// 		console.log('returning full gallery')
+			// 		return this.state.gallery;
+			// 	} else {
+
+			// 	return elem.category === this.state.clothingCategory || elem.name === this.state.clothingSubCategory || elem.mat_name === this.state.material
+			// 	}
+			
+
 			// cat true subcat false mat false
 			if (this.state.clothingCategory !== 'SELECT' && this.state.clothingSubCategory === 'SELECT' && this.state.material === 'SELECT') {
 				console.log('returning cat')
 				return elem.category === this.state.clothingCategory;
+			}
+
+			// cat true subcat false mat true
+			if (this.state.clothingCategory !== 'SELECT' && this.state.clothingSubCategory === 'SELECT' && this.state.material !== 'SELECT') {
+				console.log('returning cat')
+				return elem.category === this.state.clothingCategory && elem.mat_name === this.state.material;
 			}
 
 			// cat true subcat true mat false
@@ -70,11 +88,13 @@ export default class Gallery extends Component {
 				return elem.category === this.state.clothingCategory && elem.name === this.state.clothingSubCategory;
 			}
 
-			// cat true subcat true mat true
+			// cat true subcat true mat true  ADD CONDITION FOR NOTHING RETURNED
 			if (this.state.clothingCategory !== 'SELECT' && this.state.clothingSubCategory !== 'SELECT' && this.state.material !== 'SELECT') {
 				console.log('returning cat subcat mat')
 				return elem.category === this.state.clothingCategory && elem.name === this.state.clothingSubCategory && elem.mat_name === this.state.material;
 			}
+
+
 
 			// cat false subcat true mat true
 			if (this.state.clothingCategory === 'SELECT' && this.state.clothingSubCategory !== 'SELECT' && this.state.material !== 'SELECT') {
@@ -104,9 +124,9 @@ export default class Gallery extends Component {
 			return (
 				<div key={i} className='gallery-items'>
 					<img className="gallery-images" src={e.image} alt={e.name} />
-					<p>{e.category}</p>
-					<p>{e.name}</p>
-					<p>{e.mat_name}</p>
+					<p className='gallery-items-cat'>{e.category}</p>
+					<p className='gallery-items-name'>{e.name}</p>
+					<p className='gallery-items-mat'>{e.mat_name}</p>
 
 				</div>
 			)
@@ -125,13 +145,13 @@ export default class Gallery extends Component {
 						<li className="gallery-li">
 							<span className="styletype">Category</span>
 							<select className="select-btn" name="clothingCategory" onChange={(e) => this.handleChange(e.target.name, e.target.value)}>
-								<option value="Select">SELECT</option><option value="Dresses">Dresses</option><option value="Tops">Tops</option><option value="Skirts">Skirts</option><option value="Pants">Pants</option>
+								<option value="SELECT">SELECT</option><option value="Dresses">Dresses</option><option value="Tops">Tops</option><option value="Skirts">Skirts</option><option value="Pants">Pants</option>
 							</select>
 						</li>
 						<li className="gallery-li">
 							<span className="styletype">Pattern</span>
 							<select className="select-btn" name="clothingSubCategory" onChange={(e) => this.handleChange(e.target.name, e.target.value)}>
-								<option value="Select">SELECT</option>
+								<option value="SELECT">SELECT</option>
 								{
 									(this.state.clothingCategory === 'SELECT') ?
 										this.subCatTrue() : this.subCatFalse()
@@ -141,7 +161,7 @@ export default class Gallery extends Component {
 						<li className="gallery-li">
 							<span className="styletype">Material</span>
 							<select className="select-btn" name="material" onChange={(e) => this.handleChange(e.target.name, e.target.value)} >
-								<option value="Select">SELECT</option>
+								<option value="SELECT">SELECT</option>
 								{
 									this.state.materials.map((e, i) => <option value={e.name}>{e.name}</option>)
 								}

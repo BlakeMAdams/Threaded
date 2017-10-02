@@ -13,3 +13,28 @@
 .gallery-items {
 	margin: 25px 10px;
 }
+.gallery-images {
+	border-top: 4px solid $sec-color;
+	border-bottom: 2px solid $sec-color;
+}
+#gallery .sel-dropdown {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	
+}
+.gallery-items-name, .gallery-items-cat, .gallery-items-mat {
+	margin: 5px 0;
+}
+.gallery-items-name {
+	font-size: 24px;
+	font-family: 'Satisfy', 'Open Sans', 'Helvetica', 'Arial', sans-serif
+}
+
+@media (max-width: 426px) {
+	#gallery .sel-dropdown{
+		justify-content: flex-end;
+		margin: 0;
+	}
+
+}

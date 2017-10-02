@@ -59,13 +59,13 @@ export default class OrderHistory extends Component {
 									<div key={i} className='order-garment'>
 										{/* <img className="gallery-images" src={e.image} alt={e.name} /> */}
 										<p className='clothing-item-display'><img src={e[6]} alt={e[1]} /></p>
-										<p>NAME<br />{e[1]}</p>
-										<p>PRICE<br />${e[2]}</p>
-										<p>MATERIAL<br />{e[3]}</p>
+										<div><p><strong>DESIGN</strong><br />{e[1]}</p>
+										<p><strong>PRICE</strong><br />${e[2]}</p>
+										<p><strong>MATERIAL</strong><br />{e[3]}</p>
+										</div>
 										<div>
-											<p>MEASUREMENTS<br />
+											<p><strong>MEASUREMENTS</strong><br />
 												{myForInLoop}</p>
-
 										</div>
 									</div>
 
