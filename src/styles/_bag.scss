@@ -1,45 +1,66 @@
 .bag-column-headings {
-	display:flex;
-	
-	justify-content: space-between;
-	border-bottom: 3px solid #333;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 3px solid #333;
 }
+
 .bag-item-row {
-	border-bottom: 1px solid #333;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-	margin-top: 20px;
-	padding-bottom: 20px;
+    border-bottom: 1px solid #333;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding-bottom: 20px;
 }
+
 #bag p {
-	margin: 2px 0; font-style: italic;
+    margin: 2px 0;
+    font-style: italic;
 }
-#bag h2, #bag h3 {
-	margin-bottom: .5em;
+
+#bag h2,
+#bag h3 {
+    margin-bottom: .5em;
 }
-#bag .clothing-item-display, .product-col {
-	// max-width: 360px;
-}
-#bag .clothing-item-display img {
-	max-width: 200px;
-	max-height: 300px;
-}
-#bag .bag-measurements-list {
-	font-size: .9em;
-}
+
+#bag .clothing-item-display,
 .product-col {
-	width: 50%;
+    // max-width: 360px;
 }
+
+#bag .clothing-item-display img {
+    max-width: 200px;
+    max-height: 300px;
+}
+
+#bag .bag-measurements-list {
+    font-size: .9em;
+}
+
+.product-col {
+    width: 50%;
+}
+
 .price-col {
-	width: 25%;
-	text-align: center;
+    width: 25%;
+    text-align: center;
 }
+
 .remove-col {
-	width: 25%;
-	text-align: center;
+    width: 25%;
+    text-align: center;
 }
+
 .total-col {
-	display:flex;
-	justify-content: flex-end;
+    display: flex;
+    justify-content: flex-end;
+}
+
+@media (max-width: 426px) {
+    #bag {
+        .clothing-item-display img {
+			// width: 150px;
+			// height: 225px;
+		 }
+    }
 }

@@ -29,7 +29,10 @@
 .mini-gallery-item-box {
     padding: 0;
 }
-
+.mini-gallery-item-box img {
+    border-top: 4px solid $sec-color;
+    border-bottom: 2px solid $sec-color;
+}
 .gallery-items-container img {
     height: auto;
     width: 100px;
@@ -157,9 +160,11 @@ button.sub-categories:focus {
         flex-direction: row;
         margin-top: 10px;
         flex-wrap: wrap;
+        align-items: flex-start;
     }
     .mini-gallery-item-box {
         margin: 0 7px;
+        max-width: 29%;
     }
     .gallery-title-desktop {
         display: none;

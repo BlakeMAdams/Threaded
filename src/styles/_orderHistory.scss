@@ -26,14 +26,30 @@
 	justify-content: space-around;
 	align-items: flex-start;
 	padding: 20px 0;
+	border-bottom: 15px solid $btn-color;
 }
 .clothing-item-display img {
 	max-width: 200px;
 	max-height: 300px;
+	border-top: 4px solid $sec-color;
+    border-bottom: 2px solid $sec-color;
 }
 #order-history .clothing-item-display {
 	margin: 0;
 }
+.clothing-item-order-50 {
+	display: flex;
+}
 .measurements-lines {
 	display:block;
+}
+.order-design-col {
+	margin-right: 40px;
+}
+
+@media (max-width: 426px){
+	.clothing-item-order-50 {
+		flex-direction: column;
+	}
+	margin-right: 0;
 }

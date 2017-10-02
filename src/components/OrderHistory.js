@@ -35,7 +35,7 @@ export default class OrderHistory extends Component {
 
 		var orderItem = this.state.orders.map((e, i) => {
 			return (
-				<div key={i} className='order'> 
+				<div key={i} className='order'>
 					<div className='order-details'><p>ORDER PLACED<br />{this.beautifyDate(e.order_date)}</p>
 
 
@@ -59,13 +59,15 @@ export default class OrderHistory extends Component {
 									<div key={i} className='order-garment'>
 										{/* <img className="gallery-images" src={e.image} alt={e.name} /> */}
 										<p className='clothing-item-display'><img src={e[6]} alt={e[1]} /></p>
-										<div><p><strong>DESIGN</strong><br />{e[1]}</p>
-										<p><strong>PRICE</strong><br />${e[2]}</p>
-										<p><strong>MATERIAL</strong><br />{e[3]}</p>
-										</div>
-										<div>
-											<p><strong>MEASUREMENTS</strong><br />
-												{myForInLoop}</p>
+										<div className='clothing-item-order-50'>
+											<div className='order-design-col'><p><strong>DESIGN</strong><br />{e[1]}</p>
+												<p><strong>PRICE</strong><br />${e[2]}</p>
+												<p><strong>MATERIAL</strong><br />{e[3]}</p>
+											</div>
+											<div>
+												<p><strong>MEASUREMENTS</strong><br />
+													{myForInLoop}</p>
+											</div>
 										</div>
 									</div>
 
@@ -81,9 +83,9 @@ export default class OrderHistory extends Component {
 
 		return (
 			<div className="order-history">
-					<div className='orders-container'>
-						{orderItem}
-					</div>
+				<div className='orders-container'>
+					{orderItem}
+				</div>
 			</div>
 		)
 	}
