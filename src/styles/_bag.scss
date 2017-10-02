@@ -61,6 +61,12 @@
         .clothing-item-display img {
 			width: 150px;
 			height: 225px;
-		 }
+         }
+         .product-col {
+             width: 75%;
+         }
+         .price-col, .remove-col {
+             width: 12%;
+         }
     }
 }

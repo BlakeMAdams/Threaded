@@ -17,7 +17,7 @@ export default class Home extends Component {
 					</div>
 					<img className="hero" alt="hero" src="http://img.eshakti.com/bannerimages/1200x855-1-10-17-4.jpg" />
 					<div className="home-bio">
-						<h2>How Threaded Started</h2>
+						<h2>The Threaded Story</h2>
 						<p>I have struggled with buying clothes. It even got to the point I wouldn't buy myself anything. I have this odd body shape from eating yummy food and birthing children.</p>
 						<p>I have been sewing for 10 yrs. I sewed for a company that sells on the Today show. I sew for my family and friends and <strong>now I want to sew for you</strong>! Together we can make clothing that fits your body and not someone else's. That's what I would be doing. <strong>A custom perfect fit</strong>. The clothing will look store bought and not homemade.</p>
 						<p>Now I would love to share my skill and love for sewing and help each one of you re-new your love for perfect fitting clothing. </p>

@@ -55,6 +55,15 @@
       textarea {
           resize: vertical;
       }
+
+      .profile-image {
+        height: 150px;
+        width: 150px;
+        border-radius: 150px;
+        display: block;
+        margin: 0 auto;
+      }
+      .profile-image-txt { text-align: center;}
       
       
   }

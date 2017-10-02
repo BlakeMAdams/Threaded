@@ -116,11 +116,13 @@ export default class Profile extends Component {
 
 
 					<h1 className="title">My Profile</h1>
+					<img className='profile-image' src={this.state.picture} alt={this.state.first_name} />
+					<p className='profile-image-txt'>{this.state.first_name} {this.state.last_name}</p>
 					<div id="profile-form">
 
 
 						<ProfileForm
-
+							
 							first_name={this.state.first_name}
 							last_name={this.state.last_name}
 							email={this.state.email}
