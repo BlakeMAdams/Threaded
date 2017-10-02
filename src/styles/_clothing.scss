@@ -159,8 +159,9 @@ button.sub-categories:focus {
     .gallery-items-container {
         flex-direction: row;
         margin-top: 10px;
-        flex-wrap: wrap;
+        // flex-wrap: wrap;
         align-items: flex-start;
+        max-width: 400px;
     }
     .mini-gallery-item-box {
         margin: 0 7px;

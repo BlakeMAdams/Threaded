@@ -1,0 +1,27 @@
+.hero {
+	width: 100%;
+	height: auto;
+	max-width: 900px;
+}
+.home-bio {
+	margin: 40px 5%;
+}
+.home-bio h2 { text-align: center;
+font-size: 30px;
+font-weight: 800;}
+.home-subtitle {
+	text-align: center;
+	h2 {
+		font-size: 32px;
+		font-family: 'Satisfy', 'Open Sans', 'Helvetica', 'Arial', sans-serif;
+	}
+}
+.home-subtitle h2, .home-subtitle h3 {
+	margin: 10px 0;	
+}
+@media (max-width:426px) {
+	.home-col-50 {
+		display: block;
+		width: 100%;
+	}
+}

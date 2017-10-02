@@ -73,7 +73,7 @@ li {
 h1 { 
     font-size: 40px;
     color: $txt-color; 
-    font-family: 'Satisfy', 'Open Sans', 'Helvetica', 'Arial', sans-serif
+    font-family: 'Satisfy', 'Open Sans', 'Helvetica', 'Arial', sans-serif;
 }
 
 p { margin: .8em 0;}
@@ -145,6 +145,20 @@ a:active {
     padding: .5rem;
     margin: .5rem;
 }
+
+::-webkit-scrollbar {
+    width: 15px;
+    height: 0px;
+ }
+ 
+ ::-webkit-scrollbar-track {
+    background: #fff;
+ }
+ 
+ ::-webkit-scrollbar-thumb {
+    background: $btn-color;
+ }
+
 @media (max-width: 426px){
     body {
         margin: 0; padding: 0;
@@ -157,4 +171,9 @@ a:active {
     .page h1 {
         margin-left: 10px;
     }
+    ::-webkit-scrollbar {
+        width: 0px;
+        height: 15px;
+     }
+     
 }

@@ -41,15 +41,15 @@ VALUES
 ('Jumpsuit','Pants','','https://preview.ibb.co/dfSfBG/jumpsuit_white.png','4'),
 ('Jumpsuit','Pants','','https://preview.ibb.co/iMVdyw/jumpsuit_corduroy_navy.png','2'),
 
-('Knit Pants','Pants','','https://preview.ibb.co/c0dbkb/knit_pants_flannel_plaid_red.png','6'),
-('Knit Pants','Pants','','https://preview.ibb.co/nG8LBG/knit_pants_red_fleece.png','3'),
-('Knit Pants','Pants','','https://preview.ibb.co/e4rJyw/knit_pants_white.png','4'),
-('Knit Pants','Pants','','https://preview.ibb.co/exvdyw/knit_pants_black.png','5'),
+('Simple Knit','Pants','','https://preview.ibb.co/c0dbkb/knit_pants_flannel_plaid_red.png','6'),
+('Simple Knit','Pants','','https://preview.ibb.co/nG8LBG/knit_pants_red_fleece.png','3'),
+('Simple Knit','Pants','','https://preview.ibb.co/e4rJyw/knit_pants_white.png','4'),
+('Simple Knit','Pants','','https://preview.ibb.co/exvdyw/knit_pants_black.png','5'),
 
-('Palazzo Pants','Pants','','https://preview.ibb.co/mLyRkb/palazzo_polka_dots.png','1'),
-('Palazzo Pants','Pants','','https://preview.ibb.co/kSjz5b/palazzo_white.png','4'),
-('Palazzo Pants','Pants','','https://preview.ibb.co/fKsmkb/palazzo_black.png','5'),
-('Palazzo Pants','Pants','','https://preview.ibb.co/d38Fdw/palazzo_corduroy_navy.png','2'),
+('Palazzo','Pants','','https://preview.ibb.co/mLyRkb/palazzo_polka_dots.png','1'),
+('Palazzo','Pants','','https://preview.ibb.co/kSjz5b/palazzo_white.png','4'),
+('Palazzo','Pants','','https://preview.ibb.co/fKsmkb/palazzo_black.png','5'),
+('Palazzo','Pants','','https://preview.ibb.co/d38Fdw/palazzo_corduroy_navy.png','2'),
 
 ('Trapeze Hem','Tops','','https://preview.ibb.co/mRZrkb/trapeze_hem_flannel_plaid_red.png','6'),
 ('Trapeze Hem','Tops','','https://preview.ibb.co/gtErkb/trapeze_hem_polka_dots.png','1'),

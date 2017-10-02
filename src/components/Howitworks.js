@@ -40,7 +40,7 @@ export default class Howitworks extends Component {
 								<h2 className="hiw-title"><span>2.</span> Tell us your measurements</h2>
 								<span className="hiwitalics">Whether you choose to customize your item or not, we’ll always need to know at least your height to give you a great fit. </span>
 
-								<br /><Link className="hiw-button" to="/measurements">SEE OUR SIZE &amp; FITTING GUIDE</Link>
+								<br /><Link className="hiw-button" to="/measure-myself">SEE OUR SIZE &amp; FITTING GUIDE</Link>
 							</div>
 
 

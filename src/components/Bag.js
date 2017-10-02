@@ -20,10 +20,24 @@ class Bag extends Component {
 		// this.sendMail = this.sendMail.bind(this);
 	}
 
-	// componentDidMount() {
-	// 	this.setState({
-	// 		stripTotal: priceTotal
-	// 	})
+	componentWillMount() {
+		// console.log("compwillmount bag: ", this.props.bag)
+		function getTotal(arr) {
+			var total = 0;
+			for(var i = 0; i < arr.length; i++) {
+				total += arr[i][2]
+			}  
+			return  total * 100
+		}
+		console.log('props.bag', this.props.bag)
+		this.setState({
+			stripeTotal: getTotal(this.props.bag)
+		}, () => console.log("grand total from state: ", this.state.stripeTotal))
+
+	}
+
+	// componentDidUpdate(prevProps, prevState) {
+		
 	// }
 
 	checkout(priceTotal) {
@@ -33,21 +47,18 @@ class Bag extends Component {
 			total: priceTotal
 		}
 
-		priceTotal *= 100;
-		this.setState({
-			stripeTotal: 70000
-		}, () => console.log('stripetotal', this.state.stripeTotal))
-		
-
-		return axios.post('/api/checkout', totalBag).then()
+		return axios.post('/api/checkout', totalBag)
 	}
 	//sendMail(totalBag)
 
 	onToken = (token) => {
+		
 		token.card = void 0;
-		console.log('token', token);
+		console.log('token', token)
+		console.log('in token state.stripeTotal', this.state.stripeTotal)
+
 		axios.post('/api/payment', { token, amount: this.state.stripeTotal }).then(response => {
-			alert('Thank you for your business.')
+			alert('Thank you for your business! You have been charged $' + this.state.stripeTotal/100 + '.')
 		});
 	}
 
